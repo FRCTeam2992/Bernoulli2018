@@ -128,7 +128,7 @@ public class OI {
         intakeArmsClosed.whileHeld(new intakeArmsOpen(false));
         
         intakeArmOpenBtn = new JoystickButton(buttonBox, 4);
-        intakeArmOpenBtn.whileHeld(new intakeArmsOpen(false));
+        intakeArmOpenBtn.whileHeld(new intakeArmsOpen(true));
         
         intakeDeployBtn = new JoystickButton(buttonBox, 3);
         intakeDeployBtn.whileHeld(new intakeDeployed(false));

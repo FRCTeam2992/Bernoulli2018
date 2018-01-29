@@ -54,7 +54,7 @@ public class Intake extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
 
-    @Override
+  
     public void periodic() {
         // Put code here to be run every loop
 
@@ -66,6 +66,23 @@ public class Intake extends Subsystem {
     public void deployIntake(boolean deploy) {
     	intakeDeploySol.set(deploy);
 	}
+    
+    public void intakeArmsOpen(boolean open) {
+    	intakeArmsSol.set(open);
+    }
+    public void intakeIn(double speed){
+    	leftIntakeMotor.set(speed);
+    	rightIntakeMotor.set(speed);
+    }
+    
+    public void intakeOut(double speed){
+    	leftIntakeMotor.set(-speed);
+    	rightIntakeMotor.set(-speed);
+    }
+    public void intakeStop(){
+    	leftIntakeMotor.set(0);
+    	rightIntakeMotor.set(0);
+    }
 }
 
 
