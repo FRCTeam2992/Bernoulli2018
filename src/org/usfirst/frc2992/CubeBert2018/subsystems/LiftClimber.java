@@ -68,6 +68,20 @@ public class LiftClimber extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    
+    public void stopLift() {
+    	liftMotor.set(0);
+    }
 
+    public void downLift(double speed) {
+    	liftMotor.set(speed);
+    }
+    public void liftUp(double speed) {
+    	liftMotor.set(speed);
+    }
+    public void startClimbMotors(double speed) {
+    	climbMotor1.set(speed);
+    	climbMotor2.set(speed);
+    }
 }
 
