@@ -60,7 +60,7 @@ public class OI {
     public JoystickButton intakeFeedOutBtn;
     public JoystickButton intakeDeployBtn;
     public JoystickButton intakeArmOpenBtn;
-    public JoystickButton intakeArmsClosed;
+    public JoystickButton intakeArmsClosedBtn;
     public JoystickButton liftCubeDownBtn;
     public JoystickButton groundLevelBtn;
     public JoystickButton switchLevelBtn;
@@ -124,20 +124,23 @@ public class OI {
         liftCubeDownBtn = new JoystickButton(buttonBox, 7);
         liftCubeDownBtn.whileHeld(new liftDown(0));
         
-        intakeArmsClosed = new JoystickButton(buttonBox, 5);
-        intakeArmsClosed.whileHeld(new intakeArmsOpen(false));
+        intakeArmsClosedBtn = new JoystickButton(buttonBox, 5);
+        intakeArmsClosedBtn.whenPressed(new intakeArmsOpen(false));
         
         intakeArmOpenBtn = new JoystickButton(buttonBox, 4);
-        intakeArmOpenBtn.whileHeld(new intakeArmsOpen(true));
+        intakeArmOpenBtn.whenPressed(new intakeArmsOpen(true));
         
         intakeDeployBtn = new JoystickButton(buttonBox, 3);
-        intakeDeployBtn.whileHeld(new intakeDeployed(false));
+        intakeDeployBtn.whenPressed(new intakeDeployed(true));//true is down
+        intakeDeployBtn.whenReleased(new intakeDeployed(false));
         
         intakeFeedOutBtn = new JoystickButton(buttonBox, 2);
-        intakeFeedOutBtn.whileHeld(new intakeOut(0));
+        intakeFeedOutBtn.whileHeld(new intakeOut(0.5));
+        intakeFeedOutBtn.whenReleased(new intakeStop());
         
         intakeFeedInBtn = new JoystickButton(buttonBox, 1);
-        intakeFeedInBtn.whileHeld(new intakeIn(0));
+        intakeFeedInBtn.whileHeld(new intakeIn(0.5));
+        intakeFeedInBtn.whenReleased(new intakeStop());
         
         liftCubeUpBtn = new JoystickButton(buttonBox, 6);
         liftCubeUpBtn.whileHeld(new liftUp(0));

@@ -40,7 +40,7 @@ public class intakeDeployed extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.intake.deployIntake(m_deploy);
+    	Robot.intake.deployIntake(m_deploy);//put in init so runs once. Also chg isFinished to true so runs only once.
     }
 
     // Called repeatedly when this Command is scheduled to run
