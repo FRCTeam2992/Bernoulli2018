@@ -83,5 +83,18 @@ public class LiftClimber extends Subsystem {
     	climbMotor1.set(speed);
     	climbMotor2.set(speed);
     }
+    public void deployLeftClamp(boolean deploy) {
+    	leftScaleClampSol.set(deploy);
+    }
+    public void deployRightClamp(boolean deploy) {
+    	rightScaleClampSol.set(deploy);
+    }
+    public void climbStop() {
+    	climbMotor1.set(0);
+    	climbMotor2.set(0);
+    }
+    public void scaleHeight() {
+    	
+    }
 }
 
