@@ -74,10 +74,20 @@ public class LiftClimber extends Subsystem {
     }
 
     public void downLift(double speed) {
+    	if(liftBottomSensor.get()==true) {//make sure lift wont keep running down when reaches bottom
+    		stopLift();
+    	}
+    	else {
     	liftMotor.set(speed);
+    	}
     }
     public void liftUp(double speed) {
+    	if(liftTopSensor.get()==true) {//make sure lift wont keep going up when reaches very top.
+    		stopLift();
+    	}
+    	else {
     	liftMotor.set(speed);
+    	}
     }
     public void startClimbMotors(double speed) {
     	climbMotor1.set(speed);
@@ -92,6 +102,10 @@ public class LiftClimber extends Subsystem {
     public void climbStop() {
     	climbMotor1.set(0);
     	climbMotor2.set(0);
+    }
+    public void deployRamps(boolean deploy) {
+    	rampLatchSol.set(false);//release ramps
+    	rampDeploySol.set(deploy);//lower ramps
     }
     public void scaleHeight() {
     	
