@@ -74,7 +74,7 @@ public class LiftClimber extends Subsystem {
     }
 
     public void downLift(double speed) {
-    	if(liftBottomSensor.get()==true) {//make sure lift wont keep running down when reaches bottom
+    	if(liftBottomSensor.get()==true) {//make sure lift won't keep running down when reaches bottom
     		stopLift();
     	}
     	else {
@@ -82,11 +82,11 @@ public class LiftClimber extends Subsystem {
     	}
     }
     public void liftUp(double speed) {
-    	if(liftTopSensor.get()==true) {//make sure lift wont keep going up when reaches very top.
+    	if(liftTopSensor.get()==true) {//make sure lift won't keep going up when reaches very top.
     		stopLift();
     	}
     	else {
-    	liftMotor.set(speed);
+    	liftMotor.set(-speed);
     	}
     }
     public void startClimbMotors(double speed) {
