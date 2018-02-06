@@ -63,7 +63,7 @@ public class Intake extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	
+
 	public double leftCounter=0;//for intake stop function
 	public double rightCounter=0;//counters up here so dont reset to 0 every time reruns
 
@@ -75,10 +75,36 @@ public class Intake extends Subsystem {
 		intakeArmsSol.set(open);
 	}
 	public void intakeIn(double speed){
+
+		if(leftIntakeSensor.get()==true) {//makes left intake motor run a bit longer when sensor sees smthg-to get cube in all way
+			leftCounter++;//increments counter	
+		}
+		else {
+			leftCounter = 0;
+		}
+
+
+		if(rightIntakeSensor.get()==true) {//makes right intake motor run a bit longer when sensor sees smthg-to get cube in all way
+			rightCounter++;
+		}
+		else {
+			rightCounter = 0;
+		}
+
 		if(intakeDeploySol.get()==true) {   //only runs the intake when arms are down- never up.
 			speed = Math.max(0.0,  Math.min(1.0, speed)); // Enforce 0.0 <= speed <= 1.0. finds min of 1 or speed so cant be faster than 100% then max so not neg.
-			leftIntakeMotor.set(speed);
-			rightIntakeMotor.set(speed-0.2);//make one side run slower than other to correct angled cubes
+			if (leftCounter < 5) {
+				leftIntakeMotor.set(speed);				
+			}
+			else {
+				leftIntakeMotor.set(0.0);
+			}
+			if (rightCounter < 5) {
+				rightIntakeMotor.set(speed-0.2);//make one side run slower than other to correct angled cubes
+			}
+			else {
+				rightIntakeMotor.set(0.0);
+			}
 		}
 		else {
 			intakeStop();
@@ -96,25 +122,10 @@ public class Intake extends Subsystem {
 		}
 	}
 	public void intakeStop(){
-		if(leftIntakeSensor.get()==true) {//makes left intake motor run a bit longer when sensor sees smthg-to get cube in all way
-			leftCounter++;//increments counter
-			if(leftCounter==5) {//after 100ms motor stops
-				leftIntakeMotor.set(0);
-				leftCounter=0;//resets counter
-			}
-		}
-		if(rightIntakeSensor.get()==true) {//makes right intake motor run a bit longer when sensor sees smthg-to get cube in all way
-			rightCounter++;
-			if(rightCounter==5) {//after 100ms motor stops bc runs again every 20ms
-				rightIntakeMotor.set(0);
-				rightCounter=0;//resets counter
-			}
-		}
-		else {
-			leftIntakeMotor.set(0);
-			rightIntakeMotor.set(0);
-		}
-		
+
+		leftIntakeMotor.set(0);
+		rightIntakeMotor.set(0);
+
 	}
 }
 
