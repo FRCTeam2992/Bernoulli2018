@@ -115,13 +115,14 @@ public class OI {
         climbWinchBtn.whileHeld(new climbStart(0));
         
         climbingPosBtn = new JoystickButton(buttonBox, 11);
-        climbingPosBtn.whenPressed(new liftHeight(25.0, 4.0));
+        climbingPosBtn.whenPressed(new liftHeight(25.0, 4.0));//liftHeight(dist,time) 
         
         scaleLevelBtn = new JoystickButton(buttonBox, 10);
-        scaleLevelBtn.whenPressed(new liftHeight(30.0, 4.0));
+        //the dist is how high the first stage of the lift is gonna go-actually twice the height bc 2 stages away
+        scaleLevelBtn.whenPressed(new liftHeight(30.0, 4.0));//dist actually 60 in
         
         switchLevelBtn = new JoystickButton(buttonBox, 9);
-        switchLevelBtn.whenPressed(new liftHeight(8.0, 4.0));
+        switchLevelBtn.whenPressed(new liftHeight(8.0, 4.0));//dist actually 16 in
         
         groundLevelBtn = new JoystickButton(buttonBox, 8);
         groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));

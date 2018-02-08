@@ -45,7 +45,7 @@ public class liftHeight extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.liftClimber.gotoHeight(m_height);
+    	Robot.liftClimber.goToHeight(m_height);
     	liftTime.reset();
     	liftTime.start();
     

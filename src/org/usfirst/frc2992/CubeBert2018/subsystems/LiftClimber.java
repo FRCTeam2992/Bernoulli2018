@@ -81,6 +81,7 @@ public class LiftClimber extends Subsystem {
         // Put code here to be run every loop
     	
     	// Make sure the lift PID motors aren't pushing us past the limit switches
+    	//dont have to do ==true. redundant
     	if (liftTopSensor.get() && liftBottomSensor.get()) {
     		// Should never get here -- broken switch so disable auto moves
     		liftPID.setOutputRange(0.0,  0.0);
@@ -125,7 +126,7 @@ public class LiftClimber extends Subsystem {
     		stopLift();
     	}
     	else {
-    	liftMotor.set(speed);
+    	liftMotor.set(-speed);
     	}
     }
     public void liftUp(double speed) {
@@ -134,7 +135,7 @@ public class LiftClimber extends Subsystem {
     		stopLift();
     	}
     	else {
-    	liftMotor.set(-speed);
+    	liftMotor.set(speed);
     	}
     }
     public void startClimbMotors(double speed) {
@@ -155,8 +156,8 @@ public class LiftClimber extends Subsystem {
     	rampLatchSol.set(false);//release ramps
     	rampDeploySol.set(deploy);//lower ramps
     }
-    public void gotoHeight(double height) {
-    	height = Math.min(0.0, Math.max(liftMaxTravel, height));  // 0 <= height <= liftMaxTravel
+    public void goToHeight(double height) {
+    	height = Math.max(0.0, Math.min(liftMaxTravel, height));  // 0 <= height <= liftMaxTravel
     	// And offset it by the current bottom of lift encoder offset
     	height += liftBottomEncVal;
     	
@@ -164,7 +165,7 @@ public class LiftClimber extends Subsystem {
     	liftPID.setSetpoint(height);
     	liftPID.enable();
     }
-    
+   
     public boolean atHeight() {
     	return liftPID.onTarget();
     }
