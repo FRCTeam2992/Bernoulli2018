@@ -46,7 +46,7 @@ public class liftDown extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.liftClimber.downLift(-m_speed);
+    	Robot.liftClimber.downLift(m_speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

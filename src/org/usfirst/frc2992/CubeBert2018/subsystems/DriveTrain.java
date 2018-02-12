@@ -58,6 +58,7 @@ public class DriveTrain extends Subsystem {
     
     public PIDController lDistPID, rDistPID;
     DrivePID lDistance, rDistance;
+    
 
     //distance pid
     final double dkp = .03;
@@ -105,6 +106,7 @@ public class DriveTrain extends Subsystem {
     	rDistPID.setPercentTolerance(1.0);
     	rDistPID.disable();
 
+    	turn = new RotatePID(RobotMap.leftmotors, RobotMap.rightmotors);
     	turnPID = new PIDController(rkp, rki, rkd, navx, turn);//change to navx for real robot
     	turnPID.setOutputRange(-0.35, 0.35);
     	turnPID.setInputRange(-180.0, 180.0);

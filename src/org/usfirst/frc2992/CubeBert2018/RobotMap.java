@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -53,8 +54,8 @@ public class RobotMap {
     public static Encoder driveTrainrightDriveEnc;
     public static Encoder driveTrainleftDriveEnc;
     
-    public static SpeedController intakeleftIntakeMotor;
-    public static SpeedController intakerightIntakeMotor;
+    public static WPI_VictorSPX intakeleftIntakeMotor;
+    public static WPI_VictorSPX intakerightIntakeMotor;
     public static DigitalInput intakeleftIntakeSensor;
     public static DigitalInput intakerightIntakeSensor;
     public static Solenoid intakeintakeArmsSol;
@@ -106,20 +107,20 @@ public class RobotMap {
         
         driveTrainrightDriveEnc = new Encoder(0, 1, false, EncodingType.k4X);
         LiveWindow.addSensor("DriveTrain", "rightDriveEnc", driveTrainrightDriveEnc);
-        driveTrainrightDriveEnc.setDistancePerPulse(1.0);
+        driveTrainrightDriveEnc.setDistancePerPulse(Constants.driveDistPerPulse);
         driveTrainrightDriveEnc.setPIDSourceType(PIDSourceType.kRate);
        
         driveTrainleftDriveEnc = new Encoder(2, 3, false, EncodingType.k4X);
         LiveWindow.addSensor("DriveTrain", "leftDriveEnc", driveTrainleftDriveEnc);
-        driveTrainleftDriveEnc.setDistancePerPulse(1.0);
+        driveTrainleftDriveEnc.setDistancePerPulse(Constants.driveDistPerPulse);
         driveTrainleftDriveEnc.setPIDSourceType(PIDSourceType.kRate);
         
         intakeleftIntakeMotor = new WPI_VictorSPX(6);
-        LiveWindow.addActuator("Intake", "leftIntakeMotor", (VictorSP) intakeleftIntakeMotor);
+        LiveWindow.addActuator("Intake", "leftIntakeMotor", intakeleftIntakeMotor);
         intakeleftIntakeMotor.setInverted(false);
         
         intakerightIntakeMotor = new WPI_VictorSPX(5);
-        LiveWindow.addActuator("Intake", "rightIntakeMotor", (VictorSP) intakerightIntakeMotor);
+        LiveWindow.addActuator("Intake", "rightIntakeMotor",intakerightIntakeMotor);
         intakerightIntakeMotor.setInverted(true);
               
         intakeleftIntakeSensor = new DigitalInput(6);
@@ -128,14 +129,16 @@ public class RobotMap {
         intakerightIntakeSensor = new DigitalInput(7);
         LiveWindow.addSensor("Intake", "rightIntakeSensor", intakerightIntakeSensor);
         
-        intakeintakeArmsSol = new Solenoid(1, 1);
+        intakeintakeArmsSol = new Solenoid(0, 1);
         LiveWindow.addActuator("Intake", "intakeArmsSol", intakeintakeArmsSol);
         
-        intakeintakeDeploySol = new Solenoid(2, 1);
+        intakeintakeDeploySol = new Solenoid(0, 2);
         LiveWindow.addActuator("Intake", "intakeDeploySol", intakeintakeDeploySol);
         
         liftClimberliftMotor = new WPI_TalonSRX(7);
         liftClimberliftMotor.setNeutralMode(NeutralMode.Brake);
+        liftClimberliftMotor.setSubsystem("Lift");
+        liftClimberliftMotor.setName("Lift Motor");
         LiveWindow.add(liftClimberliftMotor);
         
         liftClimberliftBottomSensor = new DigitalInput(8);
@@ -158,19 +161,23 @@ public class RobotMap {
         LiveWindow.add(liftPID);
         
         liftClimberclimbMotor1 = new WPI_TalonSRX(8);
+        liftClimberclimbMotor1.setSubsystem("Climb");
+        liftClimberclimbMotor1.setName("Climb motor 1");
         liftClimberclimbMotor2 = new WPI_TalonSRX(9);
+        liftClimberclimbMotor2.setSubsystem("Climb");
+        liftClimberclimbMotor2.setName("Climb motor 2");
         LiveWindow.add(liftClimberclimbMotor1);
         LiveWindow.add(liftClimberclimbMotor2);
         liftClimberclimbMotor1.setNeutralMode(NeutralMode.Brake);
         liftClimberclimbMotor2.setNeutralMode(NeutralMode.Brake);
         
-        liftClimberrampLatchSol = new Solenoid(4, 1);
+        liftClimberrampLatchSol = new Solenoid(0, 4);
         LiveWindow.addActuator("LiftClimber", "rampLatchSol", liftClimberrampLatchSol);
         
-        liftClimberrampDeploySol = new Solenoid(5, 2);
+        liftClimberrampDeploySol = new Solenoid(0, 5);
         LiveWindow.addActuator("LiftClimber", "rampDeploySol", liftClimberrampDeploySol);
         
-        liftClimberScaleClampSol = new Solenoid(3, 3);
+        liftClimberScaleClampSol = new Solenoid(0, 3);
         LiveWindow.addActuator("LiftClimber", "rightScaleClampSol", liftClimberScaleClampSol);
 
         
