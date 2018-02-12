@@ -69,11 +69,9 @@ public class OI {
     public JoystickButton scaleLevelBtn;
     public JoystickButton climbingPosBtn;//lifts to climbing height
     
-    public JoystickButton climbWinchBtn;
     public JoystickButton lowClimbSpeedBtn;
     public JoystickButton highClimbSpeedBtn;
-    public JoystickButton leftScaleClampBtn;
-    public JoystickButton rightScaleClampBtn;
+    public JoystickButton scaleClampBtn;
     public JoystickButton rampDeployBtn;//deploy both ramps
  
     public JoystickButton autoA;
@@ -92,28 +90,24 @@ public class OI {
 
         buttonBox = new Joystick(2);
         
-        autoD = new JoystickButton(buttonBox, 20);
+        autoD = new JoystickButton(buttonBox, 19);
         
-        autoC = new JoystickButton(buttonBox, 19);
+        autoC = new JoystickButton(buttonBox, 18);
         
-        autoB = new JoystickButton(buttonBox, 18);
+        autoB = new JoystickButton(buttonBox, 17);
         
-        autoA = new JoystickButton(buttonBox, 17);
+        autoA = new JoystickButton(buttonBox, 16);
         
-        rightScaleClampBtn = new JoystickButton(buttonBox, 16);
-        rightScaleClampBtn.whenPressed(new rightScaleClampDeploy(true));
+        scaleClampBtn = new JoystickButton(buttonBox, 14);
+        scaleClampBtn.whenPressed(new ScaleClampDeploy(true));
         
-        leftScaleClampBtn = new JoystickButton(buttonBox, 15);
-        leftScaleClampBtn.whenPressed(new leftScaleClampDeploy(true));
+        highClimbSpeedBtn = new JoystickButton(buttonBox, 13);
+        highClimbSpeedBtn.whenPressed(new climbStart(0.6));
+        highClimbSpeedBtn.whenReleased(new climbStop());
         
-        highClimbSpeedBtn = new JoystickButton(buttonBox, 14);
-        highClimbSpeedBtn.whileHeld(new climbStart(0.6));
-        
-        lowClimbSpeedBtn = new JoystickButton(buttonBox, 13);
+        lowClimbSpeedBtn = new JoystickButton(buttonBox, 12);
         lowClimbSpeedBtn.whenPressed(new climbStart(0.3));
-        
-        climbWinchBtn = new JoystickButton(buttonBox, 12);
-        climbWinchBtn.whileHeld(new climbStart(0));
+        lowClimbSpeedBtn.whenReleased(new climbStop());
         
         climbingPosBtn = new JoystickButton(buttonBox, 11);
         climbingPosBtn.whenPressed(new liftHeight(25.0, 4.0));//liftHeight(dist,time) 
@@ -129,27 +123,32 @@ public class OI {
         groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
         
         liftCubeDownBtn = new JoystickButton(buttonBox, 7);
-        liftCubeDownBtn.whileHeld(new liftDown(0.5));
+        liftCubeDownBtn.whileHeld(new liftDown(0.3));
+        liftCubeDownBtn.whenReleased(new liftStop());
         
         intakeArmsClosed = new JoystickButton(buttonBox, 5);
-        intakeArmsClosed.whileHeld(new intakeArmsOpen(false));
+        intakeArmsClosed.whenPressed(new intakeArmsOpen(false));
         
         intakeArmOpenBtn = new JoystickButton(buttonBox, 4);
-        intakeArmOpenBtn.whileHeld(new intakeArmsOpen(false));
+        intakeArmOpenBtn.whenPressed(new intakeArmsOpen(true));
         
         intakeDeployBtn = new JoystickButton(buttonBox, 3);
-        intakeDeployBtn.whileHeld(new intakeDeployed(false));
+        intakeDeployBtn.whenPressed(new intakeDeployed(false));
+        intakeDeployBtn.whenReleased(new intakeDeployed(true));
         
         intakeFeedOutBtn = new JoystickButton(buttonBox, 2);
-        intakeFeedOutBtn.whileHeld(new intakeOut(0));
+        intakeFeedOutBtn.whileHeld(new intakeOut(0.5));
+        intakeFeedOutBtn.whenReleased(new intakeStop());
         
         intakeFeedInBtn = new JoystickButton(buttonBox, 1);
-        intakeFeedInBtn.whileHeld(new intakeIn(0));
+        intakeFeedInBtn.whileHeld(new intakeIn(0.5));//whileHeld in case commands get out of order (race condition)
+        intakeFeedInBtn.whenReleased(new intakeStop());
         
         liftCubeUpBtn = new JoystickButton(buttonBox, 6);
         liftCubeUpBtn.whileHeld(new liftUp(0.5));
+        liftCubeUpBtn.whenReleased(new liftStop());
         
-        rampDeployBtn = new JoystickButton(buttonBox,21);
+        rampDeployBtn = new JoystickButton(buttonBox,15);
         rampDeployBtn.whenPressed(new rampDeploy(true));
         
         leftJoy = new mhJoystick(1);
@@ -171,10 +170,9 @@ public class OI {
         SmartDashboard.putData("climbStop", new climbStop());
         SmartDashboard.putData("intakeDeployed", new intakeDeployed(false));
         SmartDashboard.putData("intakeArmsOpen", new intakeArmsOpen(false));
-        SmartDashboard.putData("driveAutoFwd", new driveAutoFwd(0.5,0.5,0.5,false,0.5));
-        SmartDashboard.putData("driveAutoTurn", new driveAutoTurn(0.5,0.5,0.5));
-        SmartDashboard.putData("leftScaleClampDeploy", new leftScaleClampDeploy(false));
-        SmartDashboard.putData("rightScaleClampDeploy", new rightScaleClampDeploy(false));
+        SmartDashboard.putData("driveAutoFwd", new AutoDriveFwd(0.5,0.5,0.5,false,0.5));
+        SmartDashboard.putData("driveAutoTurn", new AutoDriveTurn(0.5,0.5,0.5));
+        SmartDashboard.putData("scaleClampDeploy", new ScaleClampDeploy(false));
         SmartDashboard.putData("liftHeight", new liftHeight(10.0, 4.0));
         SmartDashboard.putData("autoHighGear", new autoHighGear(false));
 
