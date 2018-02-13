@@ -1,5 +1,7 @@
 package org.usfirst.frc2992.CubeBert2018.commands;
 
+import org.usfirst.frc2992.CubeBert2018.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,5 +26,21 @@ public class AutoRSwitchCloseScale extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	String gameData = Robot.gameData;
+    	
+    	if(gameData.length()>0) {
+    		if(gameData.charAt(0)=='L' && gameData.charAt(1)=='L') {
+    			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5, 5, true, 0));
+    		}
+    		else if(gameData.charAt(0)=='L' && gameData.charAt(1)=='R') {
+    			addSequential(new AutoRtoRScale());
+    		}
+    		else if(gameData.charAt(0)=='R') {
+    			addSequential(new AutoRtoRSwitch());
+    		}
+    		else {
+    			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 5, true, 0));
+    		}
+    	}
     }
 }

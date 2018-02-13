@@ -6,5 +6,13 @@ public class Constants {
 	public final double topScaleHeight = midScaleHeight+12;
 	public final double climbHeight = 0;
 	public final double autoCrossLineDist = 209;//only for L/R positions 
-	public static final double driveDistPerPulse = (8* 3.14 * 20) / (128 * 64 * 3);// diameter[6] * PI[3.14]  / PPR[128] / Gear Box constant[3] / Gear Ratio[64:20] -- inches
+	
+	
+	public static final double driveEncDistPerPulse = (8* 3.14 * 20) / (128 * 64 * 3);// diameter[6] * PI[3.14]  / PPR[128] / Gear Box constant[3] / Gear Ratio[64:20] -- inches
+	public static final int LiftEncCountsPerRev = 1024;//1024 encoder clicks per rev of the encoder
+    public static final int LiftGearBoxRatio = 20;//20 rev of encoder per rev of the pulley
+    public static final double LiftPulleyCirc = 1.125 * Math.PI;
+    
+    public static final double liftUpPower = 0.5;
+    public static final double liftDownPower = -0.2;
 }
