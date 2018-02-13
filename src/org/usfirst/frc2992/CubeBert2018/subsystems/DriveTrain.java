@@ -94,7 +94,7 @@ public class DriveTrain extends Subsystem {
     	lDistance = new DrivePID(RobotMap.leftmotors);
     	lDistPID = new PIDController(dkp, dki, dkd,leftDriveEnc, lDistance);
     	lDistPID.setOutputRange(-0.5, 0.5);
-    	lDistPID.setInputRange(-240.0, 240.0);
+    	lDistPID.setInputRange(-321.0, 321.0);
     	lDistPID.setPercentTolerance(1.0);
     	lDistPID.disable();
 
@@ -102,7 +102,7 @@ public class DriveTrain extends Subsystem {
     	rDistance = new DrivePID(RobotMap.rightmotors);
     	rDistPID = new PIDController(dkp, dki, dkd, rightDriveEnc, rDistance);
     	rDistPID.setOutputRange(-0.5, 0.5);
-    	rDistPID.setInputRange(-240.0, 240.0);
+    	rDistPID.setInputRange(-321.0, 321.0);
     	rDistPID.setPercentTolerance(1.0);
     	rDistPID.disable();
 
@@ -166,6 +166,24 @@ public class DriveTrain extends Subsystem {
     	return angle;
     }
 
+    public boolean driveDone(String type){//for pid to see if drive fwd or drive turn is finished
+    	if(type == "dist"){
+    		if(lDistPID.onTarget() && rDistPID.onTarget()){
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	} else if(type == "rot"){
+    		if(turnPID.onTarget()){
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	} else {
+    		return false;
+    	}
+	}
+    
     public void allStop() {
     	rFDriveMotor.set(0.0);
     	rMDriveMotor.set(0.0);

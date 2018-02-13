@@ -30,15 +30,15 @@ public class AutoLtoRScale extends CommandGroup {
     	addSequential(new intakeDeployed(true));
     	addParallel(new liftHeight(Robot.constants.topScaleHeight+3,4));
     	addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,5,true,0));
-    	addSequential(new AutoDriveTurn(90,0.5,2));
+    	addSequential(new AutoDriveTurn(90,0.35,2));
     	addSequential(new AutoDriveFwd(250,0.5,8,true,90));
-    	addSequential(new AutoDriveTurn(0,0.5,2));
+    	addSequential(new AutoDriveTurn(0,0.35,2));
     	addSequential(new AutoDriveFwd(111,0.5,5,true,0));
-    	addSequential(new AutoDriveTurn(-90,0.5,2));
+    	addSequential(new AutoDriveTurn(-90,0.35,2));
     	addSequential(new AutoDriveFwd(28,0.5,5,true,-90));
     	addSequential(new intakeOut(0.5));
     	addSequential(new WaitCommand(1));
     	addSequential(new AutoDriveFwd(-28,0.5,5,true,-90));
-    	addSequential(new AutoDriveTurn(180,0.5,2));
+    	addSequential(new AutoDriveTurn(180,0.35,2));
     }
 }

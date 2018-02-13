@@ -96,8 +96,8 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-    	
-		
+		RobotMap.navx.zeroYaw();//this is to make the gyro yaw==0;
+				
 		setAutoMode();	// Read switches and do final setting for auto program
         if (autonomousCommand != null) autonomousCommand.start();
     }

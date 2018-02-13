@@ -31,7 +31,7 @@ public class AutoLtoLScale extends CommandGroup {
     	addSequential(new intakeDeployed(true));
     	addParallel(new liftHeight(Robot.constants.topScaleHeight+3, 4.0));
 		addSequential(new AutoDriveFwd(320,0.5,5,true,0));
-		addSequential(new AutoDriveTurn(90,0.5,5));
+		addSequential(new AutoDriveTurn(90,0.35,5));
 		addSequential(new AutoDriveFwd(28,0.5,5,true,90));
 		addSequential(new intakeOut(0.5));
 		addSequential(new WaitCommand(1));//in seconds

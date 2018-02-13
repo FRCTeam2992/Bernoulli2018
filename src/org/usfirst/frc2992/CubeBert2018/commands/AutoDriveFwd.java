@@ -13,6 +13,7 @@ package org.usfirst.frc2992.CubeBert2018.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2992.CubeBert2018.Robot;
+import org.usfirst.frc2992.CubeBert2018.RobotMap;
 
 /**
  *
@@ -65,13 +66,19 @@ public class AutoDriveFwd extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	
+    	Robot.driveTrain.SmartDriveDist(m_dist);//sets distance
+    	Robot.driveTrain.SmartDriveGyro(m_heading, m_speed);//sets heading and speed
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
+    	if(timer.get()==m_timeOut || Robot.driveTrain.driveDone("dist")) {//if one of these true, it's finished
+    		return true;
+    	}
+    	else {
     		return false;
+    	}
     }
 
     // Called once after isFinished returns true

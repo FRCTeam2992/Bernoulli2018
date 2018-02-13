@@ -29,7 +29,7 @@ public class AutoLtoLSwitch extends CommandGroup {
     	addSequential(new intakeDeployed(true));
     	addParallel(new liftHeight(Robot.constants.switchHeight+3,4));
     	addSequential(new AutoDriveFwd(170,0.5,5,true,0));
-    	addSequential(new AutoDriveTurn(90,0.5,2));
+    	addSequential(new AutoDriveTurn(90,0.35,2));
     	addSequential(new AutoDriveFwd(57,0.5,2,true,90));
     	addSequential(new intakeOut(0.5));
     	addSequential(new AutoDriveFwd(-57,0.5,4,true,90));

@@ -29,7 +29,7 @@ public class AutoRtoRSwitch extends CommandGroup {
     	addSequential(new intakeDeployed(true));
     	addParallel(new liftHeight(Robot.constants.switchHeight, 2));
     	addSequential(new AutoDriveFwd(168, 0.5, 3, true, 0));
-    	addSequential(new AutoDriveTurn(-90, 0.5, 3));
+    	addSequential(new AutoDriveTurn(-90, 0.35, 3));
     	addSequential(new AutoDriveFwd(35, 0.5, 3, true, -90));
     	addSequential(new intakeOut(0.5));
     }
