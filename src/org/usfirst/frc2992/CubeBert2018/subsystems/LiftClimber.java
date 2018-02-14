@@ -127,7 +127,7 @@ public class LiftClimber extends Subsystem {
     		stopLift();
     	}
     	else {
-    	liftMotor.set(speed);
+    	liftMotor.set(Math.min(speed, 0));//make sure speed is neg
     	}
     }
     public void liftUp(double speed) {
@@ -136,7 +136,7 @@ public class LiftClimber extends Subsystem {
     		stopLift();
     	}
     	else {
-    	liftMotor.set(speed);
+    	liftMotor.set(Math.max(speed, 0));//make sure speed is pos
     	}
     }
     public void startClimbMotors(double speed) {

@@ -34,5 +34,6 @@ public class AutoCtoLSwitch extends CommandGroup {
 		addSequential(new AutoDriveTurn(0,0.35,5));
 		addSequential(new AutoDriveFwd(74,0.5,5,true,0));
 		addSequential(new intakeOut(0.5));
+    
     }
 }

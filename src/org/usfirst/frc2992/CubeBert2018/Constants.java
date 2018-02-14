@@ -10,7 +10,7 @@ public class Constants {
 	
 	public static final double driveEncDistPerPulse = (8* 3.14 * 20) / (128 * 64 * 3);// diameter[6] * PI[3.14]  / PPR[128] / Gear Box constant[3] / Gear Ratio[64:20] -- inches
 	public static final int LiftEncCountsPerRev = 1024;//1024 encoder clicks per rev of the encoder
-    public static final int LiftGearBoxRatio = 20;//20 rev of encoder per rev of the pulley
+    public static final int LiftGearBoxRatio = 1;//20 rev of encoder per rev of the pulley
     public static final double LiftPulleyCirc = 1.125 * Math.PI;
     
     public static final double liftUpPower = 0.5;
