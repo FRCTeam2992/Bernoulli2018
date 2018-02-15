@@ -153,7 +153,7 @@ public class Robot extends TimedRobot {
     			autoName = "Do Nothing";
     			break;
     			
-    	case 1: autonomousCommand = new AutoDriveFwd(constants.autoCrossLineDist,0.5,10,true,0);
+    	case 1: autonomousCommand = new AutoDriveFwd(constants.autoCrossLineDist,0.5,10,false,0);
     			autoName = "Go Forward - Never in Center!!";
     			break;
     			
