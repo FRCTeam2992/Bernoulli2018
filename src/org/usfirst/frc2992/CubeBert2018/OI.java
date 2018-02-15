@@ -139,8 +139,8 @@ public class OI {
         highClimbSpeedBtn.whenPressed(new climbStart(0.6));
         highClimbSpeedBtn.whenReleased(new climbStop());
         
-        scaleClampBtn = new JoystickButton(buttonBox, 14);
-        scaleClampBtn.whenPressed(new ScaleClampDeploy(true));
+        //scaleClampBtn = new JoystickButton(buttonBox, 14); no longer needed
+        //scaleClampBtn.whenPressed(new ScaleClampDeploy(true));
         
         rampDeployBtn = new JoystickButton(buttonBox,15);
         rampDeployBtn.whenPressed(new rampDeploy(true));
