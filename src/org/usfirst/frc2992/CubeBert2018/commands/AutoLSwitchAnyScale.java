@@ -30,12 +30,15 @@ public class AutoLSwitchAnyScale extends CommandGroup {
     	if(gameData.length()>0) {
     		if(gameData.charAt(0)=='L') {
     			addSequential(new AutoLtoLSwitch());
+    			Robot.autoPath = "AutoLtoLSwitch";
     		}
     		else if(gameData.charAt(0)=='R' && gameData.charAt(1)=='L') {
     			addSequential(new AutoLtoLScale());
+    			Robot.autoPath = "AutoLtoLScale";
     		}
     		else {
     			addSequential(new AutoLtoRScale());
+    			Robot.autoPath = "AutoLtoRScale";
     		}
     	}
     }

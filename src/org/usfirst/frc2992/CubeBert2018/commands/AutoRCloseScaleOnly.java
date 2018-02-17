@@ -31,12 +31,15 @@ public class AutoRCloseScaleOnly extends CommandGroup {
     	if(gameData.length() > 0){
     		if(gameData.charAt(1) == 'L') {
     			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 3, true, 0));
+    			Robot.autoPath = "AutoCrossLine";
     		}
     		else if(gameData.charAt(1) == 'R') {
     			addSequential(new AutoRtoRScale());
+    			Robot.autoPath = "AutoRtoRScale";
     		}
     		else {
     			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 3, true, 0));
+    			Robot.autoPath = "AutoCrossLine";
     		}
     	}
     }

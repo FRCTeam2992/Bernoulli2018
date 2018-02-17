@@ -181,7 +181,7 @@ public class RobotMap {
         liftClimberliftEnc.setPIDSourceType(PIDSourceType.kDisplacement);
         
         // PID Controller for cube lift
-        liftPID = new PIDController(0.01, 0, 0, liftClimberliftEnc, liftClimberliftMotor);
+        liftPID = new PIDController(0.6, 0, 0.01, liftClimberliftEnc, liftClimberliftMotor);
         liftPID.setAbsoluteTolerance(0.5);		// Inches which is the output of scaled encoder
         LiveWindow.add(liftPID);
         

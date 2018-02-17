@@ -31,12 +31,15 @@ public class AutoLSwitchCloseScale extends CommandGroup {
     	if(gameData.length()>0) {
     		if(gameData.charAt(0)=='L') {
     			addSequential(new AutoLtoLSwitch());
+    			Robot.autoPath = "AutoLtoLSwitch";
     		}
     		else if(gameData.charAt(0)=='R' && gameData.charAt(1)=='L') {
     			addSequential(new AutoLtoLScale());
+    			Robot.autoPath = "AutoLtoLScale";
     		}
     		else {
     			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,5,true,0));
+    			Robot.autoPath = "AutoCrossLine";
     		}
     	}
     }

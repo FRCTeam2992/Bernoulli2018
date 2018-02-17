@@ -46,7 +46,9 @@ public class liftHeight extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	this.setInterruptible(true);
     	Robot.liftClimber.goToHeight(m_height);
+    	liftTime = new Timer();
     	liftTime.reset();
     	liftTime.start();
     

@@ -3,6 +3,7 @@ package org.usfirst.frc2992.CubeBert2018.commands;
 import org.usfirst.frc2992.CubeBert2018.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -32,9 +33,13 @@ public class AutoCenterSwitch extends CommandGroup {
     	if(gameData.length() > 0){
     		if(gameData.charAt(0) == 'L'){
     			addSequential(new AutoCtoLSwitch());
+    			Robot.autoPath = "AutoCtoLSwitch";//can't send stuff to SmartDashboard in a commandGroup.
+    			// autoPath a way to send the info to smartdashboard - sent in Robot
     		}
     		else if(gameData.charAt(0)=='R') {
     			addSequential(new AutoCtoRSwitch());
+    			Robot.autoPath =  "AutoCtoRSwitch";
+
     		}
     		else {//have else in case we didn't get game data for some reason
     			addSequential(new intakeDeployed(true));
@@ -44,6 +49,8 @@ public class AutoCenterSwitch extends CommandGroup {
     			addSequential(new AutoDriveFwd(49,0.5,5,true,90));
     			addSequential(new AutoDriveTurn(0,0.5,5));
     			addSequential(new AutoDriveFwd(74,0.5,5,true,0));
+    			Robot.autoPath =  "AutoCtoCrossLine";
+
     		}
     	}
     		

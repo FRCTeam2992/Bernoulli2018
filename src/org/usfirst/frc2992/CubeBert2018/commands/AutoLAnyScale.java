@@ -31,12 +31,15 @@ public class AutoLAnyScale extends CommandGroup {
     	if(gameData.length() > 0){
     		if(gameData.charAt(1) == 'L') {
     			addSequential(new AutoLtoLScale());
+    			Robot.autoPath = "AutoLtoLScale";
     		}
     		else if(gameData.charAt(1)=='R'){
     			addSequential(new AutoLtoRScale());
+    			Robot.autoPath = "AutoLtoRScale";
     		}
     		else {//in case we don't get the info
     			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,5,true,0));
+    			Robot.autoPath = "AutoCrossLine";
     		}
     	}
     }
