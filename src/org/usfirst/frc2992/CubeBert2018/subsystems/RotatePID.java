@@ -5,21 +5,23 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.SpeedController;
 import java.util.ArrayList;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 public class RotatePID implements PIDOutput {
-	private ArrayList<SpeedController> lDrive;
-	private ArrayList<SpeedController> rDrive;
+	private ArrayList<WPI_TalonSRX> lDrive;
+	private ArrayList<WPI_TalonSRX> rDrive;
 	
 	
-	public RotatePID (ArrayList<SpeedController> lMotors, ArrayList<SpeedController> rMotors) {
+	public RotatePID (ArrayList<WPI_TalonSRX> lMotors, ArrayList<WPI_TalonSRX> rMotors) {
 		lDrive = lMotors;
 		rDrive = rMotors;
 	}
 	@Override
 	public void pidWrite(double output) {
-		for (SpeedController m : lDrive) {
+		for (WPI_TalonSRX m : lDrive) {
 			m.set(output);
 		}
-		for(SpeedController m : rDrive){
+		for(WPI_TalonSRX m : rDrive){
 
 			m.set(-output);;
 		}
