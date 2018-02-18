@@ -124,11 +124,11 @@ public class DriveTrain extends Subsystem {
     	
     	for (WPI_TalonSRX motor : RobotMap.allmotors) {// for all motors in that array - run one time
     		//current limiting all motors
-        	motor.configPeakCurrentLimit(50, 0);
-        	motor.configPeakCurrentDuration(200, 0);
-        	motor.configContinuousCurrentLimit(40, 0);
-        	motor.enableCurrentLimit(true);
-        	//setting a voltage ramp for all motors
+        	motor.configPeakCurrentLimit(55, 0);//most can go is 55
+        	motor.configPeakCurrentDuration(200, 0);//if go more than 55 for longer than 200ms...
+        	motor.configContinuousCurrentLimit(55, 0);//set the max current to 55
+        	motor.enableCurrentLimit(true);// allows for limiting the current
+        	//setting a voltage ramp for all motors  basically 48 volts/sec
         	motor.configOpenloopRamp(0.25, 0);// (seconds from 0-full volts, timeout in millisec do 0); 
     	}
     }
