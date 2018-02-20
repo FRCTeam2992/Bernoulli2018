@@ -122,6 +122,7 @@ public class Robot extends TimedRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        RobotMap.navx.zeroYaw();
     }
 
     /**
@@ -159,7 +160,7 @@ public class Robot extends TimedRobot {
     			autoName = "Do Nothing";
     			break; 
     			
-    	case 1: autonomousCommand = new AutoDriveFwd(constants.autoCrossLineDist,0.5,10,false,0);
+    	case 1: autonomousCommand = new AutoDriveFwd(constants.autoCrossLineDist,1.0,10,true,0);
     			autoName = "Go Forward - Never in Center!!";
     			autoPath = "AutoDriveFwd";
     			break;
@@ -231,6 +232,9 @@ public class Robot extends TimedRobot {
   		SmartDashboard.putNumber("Gyro Angle", RobotMap.navx.getYaw());
   		SmartDashboard.putNumber("Gyro Pitch", RobotMap.navx.getPitch());
   		SmartDashboard.putNumber("Gyro Roll", RobotMap.navx.getRoll());
+  		SmartDashboard.putNumber("Left Enc", RobotMap.driveTrainleftDriveEnc.getDistance());
+  		SmartDashboard.putNumber("Right Enc", RobotMap.driveTrainrightDriveEnc.getDistance());
+  		
   		
   		SmartDashboard.putNumber("Lift Encoder", RobotMap.liftClimberliftEnc.getDistance());
   		SmartDashboard.putBoolean("Top Limit Switches", RobotMap.liftClimberliftTopSensor.get());

@@ -4,7 +4,7 @@ public class Constants {
 	public final double switchHeight = 22/2;//in inches. /2 bc actual height is half since 2 stages away 
 	public final double midScaleHeight = 66/2;//in inches
 	public final double topScaleHeight = midScaleHeight+12;
-	public final double climbHeight = 0;
+	public final double climbHeight = 35;
 	public final double autoCrossLineDist = 209;//only for L/R positions 
 	
 	
@@ -13,6 +13,9 @@ public class Constants {
     public static final int LiftGearBoxRatio = 1;//1 rev of encoder per rev of the pulley
     public static final double LiftPulleyCirc = 1.1* 1.125 * Math.PI;
     
-    public static final double liftUpPower = 0.5;
-    public static final double liftDownPower = -0.3;//maybe -.15
+    public static final double liftUpPower = 0.7;
+    public static final double liftDownPower = -0.4;//maybe -.15
+    
+    public static final double rampDeployServoOFF = 0;
+    public static final double rampDeployServoON = 1;
 }

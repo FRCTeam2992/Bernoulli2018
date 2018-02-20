@@ -54,18 +54,19 @@ public class AutoDriveTurn extends Command {
     	
     	Robot.driveTrain.rightDriveEnc.reset();
     	Robot.driveTrain.leftDriveEnc.reset();
+    	Robot.driveTrain.SmartDriveRot(m_heading);//sets heading for the turn
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.driveTrain.SmartDriveRot(m_heading);//sets heading for the turn
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-    	if(timer.get()==m_timeOut || Robot.driveTrain.driveDone("rot")) {//if one of these true it's finished
+    	if(timer.get()>=m_timeOut || Robot.driveTrain.driveDone("rot")) {//if one of these true it's finished
     		return true;
     	}
     	else {

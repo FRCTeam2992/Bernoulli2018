@@ -129,10 +129,10 @@ public class OI {
         scaleLevelBtn.whenPressed(new liftHeight(Robot.constants.midScaleHeight, 4.0));
         
         climbingPosBtn = new JoystickButton(buttonBox, 11);
-        climbingPosBtn.whenPressed(new liftHeight(25.0, 4.0));//liftHeight(dist,time) 
+        climbingPosBtn.whenPressed(new liftHeight(Robot.constants.climbHeight, 4.0));//liftHeight(dist,time) 
         
-        lowClimbSpeedBtn = new JoystickButton(buttonBox, 12);
-        lowClimbSpeedBtn.whenPressed(new climbStart(0.3));
+        lowClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to high
+        lowClimbSpeedBtn.whenPressed(new climbStart(1.0));
         lowClimbSpeedBtn.whenReleased(new climbStop());
         
         highClimbSpeedBtn = new JoystickButton(buttonBox, 13);
@@ -178,13 +178,13 @@ public class OI {
         SmartDashboard.putData("climbStop", new climbStop());
         SmartDashboard.putData("intakeDeployed", new intakeDeployed(false));
         SmartDashboard.putData("intakeArmsOpen", new intakeArmsOpen(false));
-        SmartDashboard.putData("driveAutoFwd", new AutoDriveFwd(0.5,0.5,0.5,false,0.5));
+        SmartDashboard.putData("driveAutoFwd", new AutoDriveFwd(25.0,1.0,3.0,false,0.5));
         SmartDashboard.putData("driveAutoTurn", new AutoDriveTurn(0.5,0.5,0.5));
         SmartDashboard.putData("scaleClampDeploy", new ScaleClampDeploy(false));
         SmartDashboard.putData("liftHeight 0", new liftHeight(0.0, 4.0));
         SmartDashboard.putData("autoHighGear", new autoHighGear(false));
-        SmartDashboard.putData("autoDrive24in", new AutoDriveFwd(24, 0.3, 5, false, 0));
-        SmartDashboard.putData("autoDriveTurn90", new AutoDriveTurn(90, 0.3, 5));
+        SmartDashboard.putData("autoDrive24in", new AutoDriveFwd(24, 0.8, 5, true, 0));
+        SmartDashboard.putData("autoDriveTurn90", new AutoDriveTurn(90, 0.8, 5));
         SmartDashboard.putData("liftToScaleHeight 33", new liftHeight(Robot.constants.midScaleHeight, 4.0));
         SmartDashboard.putData("liftToSwitchHeight 11", new liftHeight(Robot.constants.switchHeight, 4.0));
 

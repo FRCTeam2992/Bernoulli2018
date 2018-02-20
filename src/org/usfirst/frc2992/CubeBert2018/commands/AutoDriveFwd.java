@@ -15,6 +15,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2992.CubeBert2018.Robot;
 import org.usfirst.frc2992.CubeBert2018.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 /**
  *
  */
@@ -56,24 +59,28 @@ public class AutoDriveFwd extends Command {
     protected void initialize() {
     	this.setInterruptible(true);
     	
+    	RobotMap.driveTrainleftDriveEnc.reset();
+    	RobotMap.driveTrainrightDriveEnc.reset();
     	timer.reset();
     	timer.start();
     	
-    	Robot.driveTrain.rightDriveEnc.reset();
-    	Robot.driveTrain.leftDriveEnc.reset();
+    	Robot.driveTrain.SmartDriveDist(m_dist);//sets distance
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.driveTrain.SmartDriveDist(m_dist);//sets distance
-    	Robot.driveTrain.SmartDriveGyro(m_heading, m_speed);//sets heading and speed
+    	
+    	if (m_gyro) {
+        	Robot.driveTrain.SmartDriveGyro(m_heading, m_speed);//sets heading and speed
+    		
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-    	if(timer.get()==m_timeOut || Robot.driveTrain.driveDone("dist")) {//if one of these true, it's finished
+    	if(timer.get()>=m_timeOut || Robot.driveTrain.driveDone("dist")) {//if one of these true, it's finished
     		return true;
     	}
     	else {
@@ -84,11 +91,19 @@ public class AutoDriveFwd extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+    	for (WPI_TalonSRX motor : RobotMap.allmotors) {
+    		motor.setNeutralMode(NeutralMode.Coast);
+    	}
+    	Robot.driveTrain.lowGear();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+    	for (WPI_TalonSRX motor : RobotMap.allmotors) {
+    		motor.setNeutralMode(NeutralMode.Coast);
+    	}
+    	Robot.driveTrain.lowGear();
     }
 }
