@@ -190,7 +190,7 @@ public class RobotMap {
         liftPID.setAbsoluteTolerance(0.5);		// Inches which is the output of scaled encoder
         LiveWindow.add(liftPID);
         
-        liftClimberclimbMotor1 = new WPI_VictorSPX(2);
+        liftClimberclimbMotor1 = new WPI_VictorSPX(4);
         liftClimberclimbMotor1.setSubsystem("LiftClimber");
         liftClimberclimbMotor1.setName("Climb motor 1");
         liftClimberclimbMotor2 = new WPI_VictorSPX(3);

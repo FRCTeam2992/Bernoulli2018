@@ -16,6 +16,7 @@ public class Constants {
     public static final double liftUpPower = 0.7;
     public static final double liftDownPower = -0.4;//maybe -.15
     
-    public static final double rampDeployServoOFF = 0;
-    public static final double rampDeployServoON = 1;
+    public static final double rampServoDeploy = 0.5;
+    public static final double rampServoNotDeploy = 0.95;
+    
 }

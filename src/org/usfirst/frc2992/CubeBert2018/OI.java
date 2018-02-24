@@ -93,7 +93,7 @@ public class OI {
         buttonBox = new Joystick(2);
         
         intakeFeedInBtn = new JoystickButton(buttonBox, 1);
-        intakeFeedInBtn.whileHeld(new intakeIn(0.5));//whileHeld in case commands get out of order (race condition)
+        intakeFeedInBtn.whileHeld(new intakeIn(0.7));//whileHeld in case commands get out of order (race condition)
         intakeFeedInBtn.whenReleased(new intakeStop());
         
         intakeFeedOutBtn = new JoystickButton(buttonBox, 2);

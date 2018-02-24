@@ -47,9 +47,11 @@ public class driveSticks extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	double left = Robot.oi.leftJoy.smoothGetY();
-    	double right = Robot.oi.rightJoy.smoothGetY();
-    	Robot.driveTrain.tankDrive(-left, -right);
+    	double left = -Robot.oi.leftJoy.smoothGetY();
+    	double right = -Robot.oi.rightJoy.smoothGetY();
+    	
+    	    	
+    	Robot.driveTrain.tankDrive(left, right);
  
     	if (Robot.oi.rightJoy.getTrigger()) {
     		Robot.driveTrain.highGear();

@@ -76,7 +76,7 @@ public class Intake extends Subsystem {
 	}
 	public void intakeIn(double speed){
 
-		if(leftIntakeSensor.get()==true) {//makes left intake motor run a bit longer when sensor sees smthg-to get cube in all way
+		if(!leftIntakeSensor.get()==true) {//makes left intake motor run a bit longer when sensor sees smthg-to get cube in all way
 			leftCounter++;//increments counter	
 		}
 		else {
@@ -84,7 +84,7 @@ public class Intake extends Subsystem {
 		}
 
 
-		if(rightIntakeSensor.get()==true) {//makes right intake motor run a bit longer when sensor sees smthg-to get cube in all way
+		if(!rightIntakeSensor.get()==true) {//makes right intake motor run a bit longer when sensor sees smthg-to get cube in all way
 			rightCounter++;
 		}
 		else {

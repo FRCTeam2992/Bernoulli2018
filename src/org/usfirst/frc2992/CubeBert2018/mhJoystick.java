@@ -45,7 +45,7 @@ public class mhJoystick extends Joystick{
 
 		double val = super.getX();
 
-		return smoothPowerCurve(deadzone(val, .1));
+		return smoothPowerCurve(deadzone(val, .2));
 
 	}
 
@@ -61,7 +61,7 @@ public class mhJoystick extends Joystick{
 
 		double val = super.getY();
 
-		return smoothPowerCurve(deadzone(val, .1));
+		return smoothPowerCurve(deadzone(val, .2));
 
 	}
 

@@ -138,7 +138,7 @@ public class DriveTrain extends Subsystem {
         	motor.configContinuousCurrentLimit(55, 0);//set the max current to 55
         	motor.enableCurrentLimit(true);// allows for limiting the current
         	//setting a voltage ramp for all motors  basically 48 volts/sec
-        	motor.configOpenloopRamp(0.25, 0);// (seconds from 0-full volts, timeout in millisec do 0); 
+        	motor.configOpenloopRamp(1.0, 0);// (seconds from 0-full volts, timeout in millisec do 0); 
     	}
     }
     
@@ -235,14 +235,48 @@ public class DriveTrain extends Subsystem {
     }
     
     public void tankDrive(double left, double right) {
+    	double zRotation = (left-right)/2.0;
+    	double xSpeed = right+left/2.0;
+    	
+    	zRotation /= 1.5;			// Slow down turn rate
+    	
+    	
+    	double maxInput = Math.copySign(Math.max(Math.abs(xSpeed), Math.abs(zRotation)), xSpeed);
+
+        if (xSpeed >= 0.0) {
+          // First quadrant, else second quadrant
+          if (zRotation >= 0.0) {
+            left = maxInput;
+            right = xSpeed - zRotation;
+          } else {
+            left = xSpeed + zRotation;
+            right = maxInput;
+          }
+        } else {
+          // Third quadrant, else fourth quadrant
+          if (zRotation >= 0.0) {
+            left = xSpeed + zRotation;
+            right = maxInput;
+          } else {
+            left = maxInput;
+            right = xSpeed - zRotation;
+          }
+        }
+        
+        right = Math.max(-1.0, Math.min(1.0,  right));
+        left = Math.max(-1.0, Math.min(1.0,  left));
+        
+        
     	for(WPI_TalonSRX motor : RobotMap.leftmotors) {
     		motor.set(left);
     	}
     	for(WPI_TalonSRX motor : RobotMap.rightmotors) {
     		motor.set(right);
     	}
-    }
+
     
+    }
+
     public void highGear() {
     	driveTrainSolenoid.set(true);
     }
@@ -251,13 +285,6 @@ public class DriveTrain extends Subsystem {
     	driveTrainSolenoid.set(false);
     }
     
-    /*
-    public boolean autoDone(String type) {
-    	if(type=="dist") {
-    		if()
-    	}
-    }
-   */ 
     @Override
     public void periodic() {
         // Put code here to be run every loop

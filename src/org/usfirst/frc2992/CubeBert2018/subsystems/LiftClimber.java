@@ -61,8 +61,8 @@ public class LiftClimber extends Subsystem {
     private double liftBottomEncVal = 0.0;		// Assume we start at the bottom
     private final double liftMaxTravel = 42.0;		// Inches we can move bottom to top
     
-    private final double rampDeploy = Robot.constants.rampDeployServoON;//1
-    private final double rampDontDeploy = Robot.constants.rampDeployServoOFF;//0
+    private final double rampDontDeploy = Robot.constants.rampServoNotDeploy;//1
+    private final double rampDeploy = Robot.constants.rampServoDeploy;//0
    
     @Override
     public void initDefaultCommand() {
@@ -160,8 +160,8 @@ public class LiftClimber extends Subsystem {
     	climbMotor2.set(0);
     }
     public void deployRamps(boolean deploy) {
-    	rampLatchSol.set(false);//release ramps
-    	rampDeploySol.set(deploy);//lower ramps
+    	//rampLatchSol.set(false);//release ramps
+    	//rampDeploySol.set(deploy);//lower ramps
     	rampDeployServo.set(rampDeploy);
     }
     public void goToHeight(double height) {
