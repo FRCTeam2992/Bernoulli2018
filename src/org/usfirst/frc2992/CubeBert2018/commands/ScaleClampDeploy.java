@@ -39,7 +39,7 @@ public class ScaleClampDeploy extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.liftClimber.deployScaleClamp(m_deploy);
+    	Robot.lift.deployScaleClamp(m_deploy);
     }
 
     // Called repeatedly when this Command is scheduled to run

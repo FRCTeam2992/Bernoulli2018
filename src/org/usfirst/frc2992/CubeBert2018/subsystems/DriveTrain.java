@@ -138,7 +138,7 @@ public class DriveTrain extends Subsystem {
         	motor.configContinuousCurrentLimit(55, 0);//set the max current to 55
         	motor.enableCurrentLimit(true);// allows for limiting the current
         	//setting a voltage ramp for all motors  basically 48 volts/sec
-        	motor.configOpenloopRamp(0.25, 0);// (seconds from 0-full volts, timeout in millisec do 0); 
+        	motor.configOpenloopRamp(0.15, 0);// (seconds from 0-full volts, timeout in millisec do 0); 
     	}
     }
     
@@ -239,7 +239,7 @@ public class DriveTrain extends Subsystem {
     	double zRotation = (left-right)/2.0;
     	double xSpeed = right+left/2.0;
     	
-    	zRotation /= 1.5;			// Slow down turn rate
+    	zRotation /= 1.2;			// Slow down turn rate
     	
     	
     	double maxInput = Math.copySign(Math.max(Math.abs(xSpeed), Math.abs(zRotation)), xSpeed);

@@ -82,7 +82,7 @@ public class OI {
     //on the left joy
     public JoystickButton outTakeJoy;
     public JoystickButton openIntakeJoy;
-    //public JoystickButton closeIntakeJoy;
+    public JoystickButton closeIntakeJoy;
     
     public Joystick buttonBox;
 
@@ -104,10 +104,11 @@ public class OI {
         openIntakeJoy= new JoystickButton(leftJoy,4);
         openIntakeJoy.whenPressed(new intakeArmsOpen(true));
         
-        //closeIntakeJoy = new JoystickButton(leftJoy, );
+        closeIntakeJoy = new JoystickButton(leftJoy, 1);
+        closeIntakeJoy.whenPressed(new intakeArmsOpen(false));
         
         intakeFeedInBtn = new JoystickButton(buttonBox, 1);
-        intakeFeedInBtn.whileHeld(new intakeIn(0.7));//whileHeld in case commands get out of order (race condition)
+        intakeFeedInBtn.whileHeld(new intakeIn(0.9));//whileHeld in case commands get out of order (race condition)
         intakeFeedInBtn.whenReleased(new intakeStop());
         
         intakeFeedOutBtn = new JoystickButton(buttonBox, 2);
@@ -133,17 +134,19 @@ public class OI {
         liftCubeDownBtn.whenReleased(new liftStop());
         
         groundLevelBtn = new JoystickButton(buttonBox, 8);
-        groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
+       // groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
         
         switchLevelBtn = new JoystickButton(buttonBox, 9);
-        switchLevelBtn.whenPressed(new liftHeight(Robot.constants.switchHeight, 4.0));
+        //switchLevelBtn.whenPressed(new liftHeight(Robot.constants.switchHeight, 4.0));
         
         scaleLevelBtn = new JoystickButton(buttonBox, 10);
         //the dist is how high the first stage of the lift is gonna go-actually twice the height bc 2 stages away
-        scaleLevelBtn.whenPressed(new liftHeight(Robot.constants.midScaleHeight, 4.0));
+       // scaleLevelBtn.whenPressed(new liftHeight(Robot.constants.midScaleHeight, 4.0));
         
         climbingPosBtn = new JoystickButton(buttonBox, 11);
-        climbingPosBtn.whenPressed(new liftHeight(Robot.constants.climbHeight, 4.0));//liftHeight(dist,time) 
+        // climbingPosBtn.whenPressed(new liftHeight(Robot.constants.climbHeight, 4.0));//liftHeight(dist,time) 
+        climbingPosBtn.whileHeld(new climbStart(-0.7));
+        climbingPosBtn.whenReleased(new climbStop());
         
         lowClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to high
         lowClimbSpeedBtn.whenPressed(new climbStart(1.0));
