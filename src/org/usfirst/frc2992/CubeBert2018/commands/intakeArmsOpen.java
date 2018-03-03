@@ -40,7 +40,15 @@ public class intakeArmsOpen extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.intake.intakeArmsOpen(m_open);
+    	
+    	if(Robot.oi.leftJoy.getTrigger()) {//have trigger to close intake
+    		Robot.intake.intakeArmsOpen(false);
+    		//make sure stays closed until changed by another btn
+    		m_open = false;
+    	}
+    	else {
+    		Robot.intake.intakeArmsOpen(m_open);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

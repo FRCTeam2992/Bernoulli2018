@@ -13,7 +13,7 @@ public class Constants {
     public static final int LiftGearBoxRatio = 1;//1 rev of encoder per rev of the pulley
     public static final double LiftPulleyCirc = 1.1* 1.125 * Math.PI;
     
-    public static final double liftUpPower = 0.7;
+    public static final double liftUpPower = 0.9;
     public static final double liftDownPower = -0.4;//maybe -.15
     
     public static final double rampServoDeploy = 0.5;
