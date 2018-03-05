@@ -47,7 +47,13 @@ public class liftHeight extends Command {
     @Override
     protected void initialize() {
     	this.setInterruptible(true);
-    	Robot.lift.goToHeight(m_height);
+    	if (Robot.constants.liftEncoder) {
+        	Robot.lift.goToHeight(m_height);    		
+    	} else {
+    		// We have no encoder so fake it with timer dead reckoning
+    		Robot.lift.liftUp(1.0);
+    		m_timeOut = m_height * Robot.constants.liftTime / Robot.constants.liftMax;
+    	}
     	liftTime = new Timer();
     	liftTime.reset();
     	liftTime.start();
@@ -63,7 +69,7 @@ public class liftHeight extends Command {
     @Override
     protected boolean isFinished() {
     	// We are done if either reached our target or we time out
-    	return ( Robot.lift.atHeight() || liftTime.get() > m_timeOut);
+    	return ( (Robot.constants.liftEncoder && Robot.lift.atHeight()) || liftTime.get() > m_timeOut);
     }
 
     // Called once after isFinished returns true

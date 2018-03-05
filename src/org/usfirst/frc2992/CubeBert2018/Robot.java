@@ -114,6 +114,10 @@ public class Robot extends TimedRobot {
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		RobotMap.navx.zeroYaw();//this is to make the gyro yaw==0;
+    	intake.intakeStop();
+    	intake.intakeArmsOpen(false);
+    	intake.deployIntake(false);
+
 				
 		setAutoMode();	// Read switches and do final setting for auto program
         if (autonomousCommand != null) autonomousCommand.start();
@@ -134,6 +138,9 @@ public class Robot extends TimedRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
+    	intake.intakeStop();
+    	intake.intakeArmsOpen(false);
+    	intake.deployIntake(false);
         if (autonomousCommand != null) autonomousCommand.cancel();
         RobotMap.navx.zeroYaw();
     }
@@ -171,6 +178,7 @@ public class Robot extends TimedRobot {
     	
     	case 0: autonomousCommand = new AutoDriveStop(); 
     			autoName = "Do Nothing";
+    			autoPath = "Do Nothing";
     			break; 
     			
     	case 1: autonomousCommand = new AutoDriveFwd(constants.autoCrossLineDist,1.0,10,true,0);
@@ -233,6 +241,7 @@ public class Robot extends TimedRobot {
     	//set default so if num created is not specified - do default		
     	default: autonomousCommand = new AutoDriveStop(); 
 				autoName = "Do Nothing";
+				autoPath = "Do Nothing";
 				break;
     	}
     }

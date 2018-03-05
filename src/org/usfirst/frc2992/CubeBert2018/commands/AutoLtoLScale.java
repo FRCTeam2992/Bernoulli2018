@@ -27,15 +27,17 @@ public class AutoLtoLScale extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
+    	addSequential(new AutoDriveFwd(300, 0.8, 3, true, 0));
+    	addSequential(new WaitCommand(1.0));
     	addSequential(new intakeDeployed(true));
-    	addParallel(new liftHeight(Robot.constants.topScaleHeight+3, 4.0));
-		addSequential(new AutoDriveFwd(320,0.5,5,true,0));
-		addSequential(new AutoDriveTurn(90,0.35,5));
-		addSequential(new AutoDriveFwd(28,0.5,5,true,90));
-		addSequential(new intakeOut(0.5));
-		addSequential(new WaitCommand(1));//in seconds
-		addSequential(new intakeStop());
-		addSequential(new AutoDriveFwd(-28,0.5,5,true,90));
+    	addSequential(new liftHeight(Robot.constants.topScaleHeight+11, 3));
+
+    	addSequential(new AutoDriveTurn(90, 0.8, 3));
+    	addSequential(new AutoDriveFwd(24, 0.3, 3, true, 90));
+    	addParallel(new intakeOut(1.0));
+    	addSequential(new WaitCommand(1.0));
+    	addSequential(new AutoDriveFwd(-24, 0.3, 3, true, 90));
+
+    	
     }
 }

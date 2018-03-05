@@ -135,18 +135,19 @@ public class OI {
         
         groundLevelBtn = new JoystickButton(buttonBox, 8);
        // groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
+        groundLevelBtn.whileHeld(new climbStart(-0.7));
+        groundLevelBtn.whenReleased(new climbStop());
+        
         
         switchLevelBtn = new JoystickButton(buttonBox, 9);
         //switchLevelBtn.whenPressed(new liftHeight(Robot.constants.switchHeight, 4.0));
         
         scaleLevelBtn = new JoystickButton(buttonBox, 10);
         //the dist is how high the first stage of the lift is gonna go-actually twice the height bc 2 stages away
-       // scaleLevelBtn.whenPressed(new liftHeight(Robot.constants.midScaleHeight, 4.0));
+        //scaleLevelBtn.whenPressed(new liftHeight(Robot.constants.midScaleHeight, 4.0));
         
         climbingPosBtn = new JoystickButton(buttonBox, 11);
-        // climbingPosBtn.whenPressed(new liftHeight(Robot.constants.climbHeight, 4.0));//liftHeight(dist,time) 
-        climbingPosBtn.whileHeld(new climbStart(-0.7));
-        climbingPosBtn.whenReleased(new climbStop());
+        //climbingPosBtn.whenPressed(new liftHeight(Robot.constants.climbHeight, 4.0));//liftHeight(dist,time) 
         
         lowClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to high
         lowClimbSpeedBtn.whenPressed(new climbStart(1.0));

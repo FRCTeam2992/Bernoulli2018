@@ -27,19 +27,25 @@ public class AutoLSwitchAnyScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	String gameData=Robot.gameData;
-    	if(gameData.length()>0) {
+    	if(gameData.length()>1) {
     		if(gameData.charAt(0)=='L') {
     			addSequential(new AutoLtoLSwitch());
     			Robot.autoPath = "AutoLtoLSwitch";
+    			return;
     		}
     		else if(gameData.charAt(0)=='R' && gameData.charAt(1)=='L') {
     			addSequential(new AutoLtoLScale());
     			Robot.autoPath = "AutoLtoLScale";
+    			return;
     		}
-    		else {
+    		else if(gameData.charAt(0)=='R' && gameData.charAt(1)=='R'){
     			addSequential(new AutoLtoRScale());
     			Robot.autoPath = "AutoLtoRScale";
+    			return;
     		}
     	}
+		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,10,true,0));//auto cross line
+		Robot.autoPath = "AutoCrossLine";
+
     }
 }

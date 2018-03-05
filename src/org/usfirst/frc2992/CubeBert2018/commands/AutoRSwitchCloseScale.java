@@ -28,23 +28,25 @@ public class AutoRSwitchCloseScale extends CommandGroup {
         // arm.
     	String gameData = Robot.gameData;
     	
-    	if(gameData.length()>0) {
+    	if(gameData.length()>1) {
     		if(gameData.charAt(0)=='L' && gameData.charAt(1)=='L') {
     			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5, 5, true, 0));
     			Robot.autoPath = "AutoCrossLine";
+    			return;
     		}
     		else if(gameData.charAt(0)=='L' && gameData.charAt(1)=='R') {
     			addSequential(new AutoRtoRScale());
     			Robot.autoPath = "AutoRtoRScale";
+    			return;
     		}
     		else if(gameData.charAt(0)=='R') {
     			addSequential(new AutoRtoRSwitch());
     			Robot.autoPath = "AutoRtoRSwitch";
-    		}
-    		else {
-    			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 5, true, 0));
-    			Robot.autoPath = "AutoCrossLine";
+    			return;
     		}
     	}
+		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 5, true, 0));
+		Robot.autoPath = "AutoCrossLine";
+
     }
 }

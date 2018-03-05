@@ -32,15 +32,16 @@ public class AutoRCloseScaleSwitch extends CommandGroup {
     		if(gameData.charAt(1)=='R') {
     			addSequential(new AutoRtoRScale());
     			Robot.autoPath = "AutoRtoRScale";
+    			return;
     		}
     		else if(gameData.charAt(0)=='R') {
     			addSequential(new AutoRtoRSwitch());
     			Robot.autoPath = "AutoRtoRSwitch";
-    		}
-    		else {
-    			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 5, true, 0));
-    			Robot.autoPath = "AutoCrossLine";
+    			return;
     		}
     	}
+		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 5, true, 0));
+		Robot.autoPath = "AutoCrossLine";
+
     }
 }

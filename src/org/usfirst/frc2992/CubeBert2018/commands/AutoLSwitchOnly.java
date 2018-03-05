@@ -32,11 +32,10 @@ public class AutoLSwitchOnly extends CommandGroup {
     		if(gameData.charAt(0) == 'L') {
     			addSequential(new AutoLtoLSwitch());
     			Robot.autoPath = "AutoLtoLSwitch";
-    		}
-    		else {
-    			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,10,true,0));//auto cross line
-    			Robot.autoPath = "AutoCrossLine";
+    			return;
     		}
     	}
+    	addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,10,true,0));//auto cross line
+		Robot.autoPath = "AutoCrossLine";
     }
 }

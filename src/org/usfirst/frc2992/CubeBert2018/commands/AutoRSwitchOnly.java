@@ -31,15 +31,16 @@ public class AutoRSwitchOnly extends CommandGroup {
     		if(gameData.charAt(0) == 'L') {
     			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 3, true, 0));
     			Robot.autoPath = "AutoCrossLine";
+    			return;
     		}
     		else if(gameData.charAt(0) == 'R') {
     			addSequential(new AutoRtoRSwitch());
     			Robot.autoPath = "AutoRtoRSwitch";
-    		}
-    		else {
-    			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 3, true, 0));
-    			Robot.autoPath = "AutoCrossLine";
+    			return;
     		}
     	}
+		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 3, true, 0));
+		Robot.autoPath = "AutoCrossLine";
+
     }
 }

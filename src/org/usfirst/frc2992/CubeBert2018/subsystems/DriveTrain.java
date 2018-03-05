@@ -65,12 +65,12 @@ public class DriveTrain extends Subsystem {
     
 
     //distance pid
-    final double ldkp = .08;
+    final double ldkp = .085	;
     final double ldki = 0;
-    final double ldkd = .2;
-    final double hdkp = .04;
+    final double ldkd = .15;
+    final double hdkp = .045;
     final double hdki = 0;
-    final double hdkd = .5;
+    final double hdkd = .35;
     
     //gyro pid
     double gkp = .03; 
@@ -81,7 +81,7 @@ public class DriveTrain extends Subsystem {
     public PIDController turnPID;
     
     //rotate pid
-    final double rkp = .02;
+    final double rkp = .015;
     final double rki = .0;
     final double rkd = .03;
 
@@ -100,10 +100,10 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
     	lDistance = new DrivePID(RobotMap.leftmotors);
     	lDistPID = new PIDController(ldkp, ldki, ldkd,leftDriveEnc, lDistance);
-    	lDistPID.setOutputRange(-0.5, 0.5);
+    	lDistPID.setOutputRange(-0.8, 0.8);
     	//lDistPID.setInputRange(-321.0, 321.0);
     	//lDistPID.setPercentTolerance(5.0);
-    	lDistPID.setAbsoluteTolerance(0.5);
+    	lDistPID.setAbsoluteTolerance(1.0);
     	lDistPID.setName("Left Dist PID");
     	LiveWindow.add(lDistPID);
     	
@@ -112,8 +112,8 @@ public class DriveTrain extends Subsystem {
 
     	rDistance = new DrivePID(RobotMap.rightmotors);
     	rDistPID = new PIDController(ldkp, ldki, ldkd, rightDriveEnc, rDistance);
-    	rDistPID.setOutputRange(-0.5, 0.5);
-    	rDistPID.setAbsoluteTolerance(0.5);
+    	rDistPID.setOutputRange(-0.8, 0.8);
+    	rDistPID.setAbsoluteTolerance(1.0);
     	//rDistPID.setInputRange(-321.0, 321.0);
     	//rDistPID.setPercentTolerance(5.0);
     	rDistPID.setName("Right Dist PID");
@@ -122,10 +122,10 @@ public class DriveTrain extends Subsystem {
 
     	turn = new RotatePID(RobotMap.leftmotors, RobotMap.rightmotors);
     	turnPID = new PIDController(rkp, rki, rkd, navx, turn);//change to navx for real robot
-    	turnPID.setOutputRange(-0.35, 0.35);
+    	turnPID.setOutputRange(-0.8, 0.8);
     	turnPID.setInputRange(-180.0, 180.0);
     	turnPID.setContinuous();
-    	turnPID.setAbsoluteTolerance(3);
+    	turnPID.setAbsoluteTolerance(10);
     	turnPID.setSubsystem("DriveTrain");
     	turnPID.setName("turnPID");
     	LiveWindow.add(turnPID);
@@ -142,8 +142,14 @@ public class DriveTrain extends Subsystem {
     	}
     }
     
-    public void SmartDriveDist(double distance){//for pid- drive no gyro
+    public void SmartDriveDist(double distance) {
+    	SmartDriveDist(distance, 0.8);
+    }
+    
+    public void SmartDriveDist(double distance, double speed){//for pid- drive no gyro
     	turnPID.disable();
+    	lDistPID.setOutputRange(-speed,  speed);
+    	rDistPID.setOutputRange(-speed,  speed);
     	for (WPI_TalonSRX motor : RobotMap.allmotors) {
     		motor.setNeutralMode(NeutralMode.Brake);
     	}

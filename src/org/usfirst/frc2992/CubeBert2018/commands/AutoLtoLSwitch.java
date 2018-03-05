@@ -3,6 +3,7 @@ package org.usfirst.frc2992.CubeBert2018.commands;
 import org.usfirst.frc2992.CubeBert2018.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -26,12 +27,15 @@ public class AutoLtoLSwitch extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addSequential(new AutoDriveFwd(160, 0.8, 3, true, 0));
+    	addSequential(new AutoDriveTurn(90, 0.8, 3));
+    	addSequential(new liftHeight(Robot.constants.switchHeight+3, 2));
     	addSequential(new intakeDeployed(true));
-    	addParallel(new liftHeight(Robot.constants.switchHeight+3,4));
-    	addSequential(new AutoDriveFwd(170,0.5,5,true,0));
-    	addSequential(new AutoDriveTurn(90,0.35,2));
-    	addSequential(new AutoDriveFwd(57,0.5,2,true,90));
-    	addSequential(new intakeOut(0.5));
-    	addSequential(new AutoDriveFwd(-57,0.5,4,true,90));
+    	addSequential(new AutoDriveFwd(33, 0.3, 3, true, 90));
+    	addParallel(new intakeOut(1.0));
+    	addSequential(new WaitCommand(1.0));
+    	addSequential(new AutoDriveFwd(-33.0, 0.3, 3, true, 90));
+    	
+    	
     }
 }

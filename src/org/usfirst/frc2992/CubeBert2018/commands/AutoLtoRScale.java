@@ -27,18 +27,19 @@ public class AutoLtoRScale extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new intakeDeployed(true));
-    	addParallel(new liftHeight(Robot.constants.topScaleHeight+3,4));
-    	addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,5,true,0));
-    	addSequential(new AutoDriveTurn(90,0.35,2));
-    	addSequential(new AutoDriveFwd(250,0.5,8,true,90));
-    	addSequential(new AutoDriveTurn(0,0.35,2));
-    	addSequential(new AutoDriveFwd(111,0.5,5,true,0));
-    	addSequential(new AutoDriveTurn(-90,0.35,2));
-    	addSequential(new AutoDriveFwd(28,0.5,5,true,-90));
-    	addSequential(new intakeOut(0.5));
-    	addSequential(new WaitCommand(1));
-    	addSequential(new AutoDriveFwd(-28,0.5,5,true,-90));
-    	addSequential(new AutoDriveTurn(180,0.35,2));
+    	
+    	addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist+18,0.8,3,true,0));
+    	addSequential(new AutoDriveTurn(90,0.8,2));
+    	addSequential(new AutoDriveFwd(222,0.8,4.5,true,90));
+    	addSequential(new AutoDriveTurn(-20,0.8,2));
+    	addParallel(new intakeDeployed(true));
+    	addSequential(new liftHeight(Robot.constants.topScaleHeight+11,4));
+    	addSequential(new AutoDriveFwd(37,0.3,3,true,-20));
+    	addParallel(new intakeOut(1.0));
+    	addSequential(new WaitCommand(1.0));
+    	addSequential(new AutoDriveFwd(-35,0.3,3,true,-20));
+
+    	
+    	
     }
 }

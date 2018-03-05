@@ -64,7 +64,7 @@ public class AutoDriveFwd extends Command {
     	timer.reset();
     	timer.start();
     	
-    	Robot.driveTrain.SmartDriveDist(m_dist);//sets distance
+    	Robot.driveTrain.SmartDriveDist(m_dist, m_speed);//sets distance
     }
 
     // Called repeatedly when this Command is scheduled to run

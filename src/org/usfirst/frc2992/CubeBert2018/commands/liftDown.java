@@ -41,12 +41,13 @@ public class liftDown extends Command {
     @Override
     protected void initialize() {
     	this.setInterruptible(true);
+    	Robot.lift.downLift(m_speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.lift.downLift(m_speed);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

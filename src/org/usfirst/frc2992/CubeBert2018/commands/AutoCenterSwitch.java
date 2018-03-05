@@ -34,25 +34,24 @@ public class AutoCenterSwitch extends CommandGroup {
     		if(gameData.charAt(0) == 'L'){
     			addSequential(new AutoCtoLSwitch());
     			Robot.autoPath = "AutoCtoLSwitch";//can't send stuff to SmartDashboard in a commandGroup.
+    			return;
     			// autoPath a way to send the info to smartdashboard - sent in Robot
     		}
     		else if(gameData.charAt(0)=='R') {
     			addSequential(new AutoCtoRSwitch());
     			Robot.autoPath =  "AutoCtoRSwitch";
-
-    		}
-    		else {//have else in case we didn't get game data for some reason
-    			addSequential(new intakeDeployed(true));
-    	    	addParallel(new liftHeight(Robot.constants.switchHeight+3, 4.0));
-    			addSequential(new AutoDriveFwd(30,0.5,5,true,0));
-    			addSequential(new AutoDriveTurn(90,0.5,5));
-    			addSequential(new AutoDriveFwd(49,0.5,5,true,90));
-    			addSequential(new AutoDriveTurn(0,0.5,5));
-    			addSequential(new AutoDriveFwd(74,0.5,5,true,0));
-    			Robot.autoPath =  "AutoCtoCrossLine";
-
+    			return;
     		}
     	}
+		addSequential(new intakeDeployed(false));
+		addSequential(new AutoDriveFwd(30,0.8,3,true,0));
+		addSequential(new AutoDriveTurn(90,0.8,3));
+		addSequential(new AutoDriveFwd(49,0.8,3,true,90));
+		addSequential(new AutoDriveTurn(0,0.8,3));
+		addSequential(new liftHeight(Robot.constants.switchHeight+3, 4.0));
+		addSequential(new AutoDriveFwd(74,0.8,3,true,0));
+		Robot.autoPath =  "AutoCtoCrossLine";
+
     		
     }
 }
