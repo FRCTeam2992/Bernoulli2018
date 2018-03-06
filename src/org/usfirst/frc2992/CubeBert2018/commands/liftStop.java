@@ -51,8 +51,11 @@ public class liftStop extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	if (stopTimer.get() < 30) {
-    		// Do nothing
+    	if (stopTimer.get() < 30 && !Robot.oi.climbMasterEnableBtn.get()) {
+    		// Do nothing which keeps backdrive prevention running
+    		// Don't do backdrive prevention if in climbing mode
+    		Robot.lift.liftUp(0.1);
+
     	} else {
         	Robot.lift.stopLift();    		
     	}

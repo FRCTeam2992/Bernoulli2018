@@ -44,7 +44,15 @@ public class climbStop extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.climber.climbStop();
+    	if (Robot.oi.leftJoy.getRawButton(11) && Robot.oi.climbMasterEnableBtn.get()) {
+    		// Climb backdrive hold 1 robot
+    		Robot.climber.startClimbMotors(0.15);
+    	} else if (Robot.oi.leftJoy.getRawButton(12) && Robot.oi.climbMasterEnableBtn.get()){
+    		// Climb backdrive hold 3 robot
+    		Robot.climber.startClimbMotors(0.4);
+    	} else {
+    		Robot.climber.climbStop();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

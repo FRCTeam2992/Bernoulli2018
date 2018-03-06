@@ -67,12 +67,12 @@ public class OI {
     public JoystickButton groundLevelBtn;
     public JoystickButton switchLevelBtn;
     public JoystickButton scaleLevelBtn;
-    public JoystickButton climbingPosBtn;//lifts to climbing height
+    public JoystickButton revClimbBtn;//lifts to climbing height
     
-    public JoystickButton lowClimbSpeedBtn;
-    public JoystickButton highClimbSpeedBtn;
+    public JoystickButton smallClimbSpeedBtn;
+    public JoystickButton bigClimbSpeedBtn;
     public JoystickButton scaleClampBtn;
-    public JoystickButton rampDeployBtn;//deploy both ramps
+    public JoystickButton climbMasterEnableBtn;//deploy both ramps
  
     public JoystickButton autoA;
     public JoystickButton autoB;
@@ -134,9 +134,7 @@ public class OI {
         liftCubeDownBtn.whenReleased(new liftStop());
         
         groundLevelBtn = new JoystickButton(buttonBox, 8);
-       // groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
-        groundLevelBtn.whileHeld(new climbStart(-0.7));
-        groundLevelBtn.whenReleased(new climbStop());
+       //groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
         
         
         switchLevelBtn = new JoystickButton(buttonBox, 9);
@@ -146,22 +144,24 @@ public class OI {
         //the dist is how high the first stage of the lift is gonna go-actually twice the height bc 2 stages away
         //scaleLevelBtn.whenPressed(new liftHeight(Robot.constants.midScaleHeight, 4.0));
         
-        climbingPosBtn = new JoystickButton(buttonBox, 11);
+        revClimbBtn = new JoystickButton(buttonBox, 11);
         //climbingPosBtn.whenPressed(new liftHeight(Robot.constants.climbHeight, 4.0));//liftHeight(dist,time) 
+        revClimbBtn.whileHeld(new climbStart(-0.7));
+        revClimbBtn.whenReleased(new climbStop());
         
-        lowClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to high
-        lowClimbSpeedBtn.whenPressed(new climbStart(1.0));
-        lowClimbSpeedBtn.whenReleased(new climbStop());
+        smallClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to high
+        smallClimbSpeedBtn.whenPressed(new climbStart(1.0));
+        smallClimbSpeedBtn.whenReleased(new climbStop());
         
-        highClimbSpeedBtn = new JoystickButton(buttonBox, 13);
-        highClimbSpeedBtn.whenPressed(new climbStart(0.6));
-        highClimbSpeedBtn.whenReleased(new climbStop());
+        bigClimbSpeedBtn = new JoystickButton(buttonBox, 13);
+        bigClimbSpeedBtn.whenPressed(new climbStart(0.6));
+        bigClimbSpeedBtn.whenReleased(new climbStop());
         
         //scaleClampBtn = new JoystickButton(buttonBox, 14); no longer needed
         //scaleClampBtn.whenPressed(new ScaleClampDeploy(true));
         
-        rampDeployBtn = new JoystickButton(buttonBox,15);
-        rampDeployBtn.whenPressed(new rampDeploy(true));
+        climbMasterEnableBtn = new JoystickButton(buttonBox,15);
+        //rampDeployBtn.whenPressed(new rampDeploy(true));
         
         autoA = new JoystickButton(buttonBox, 16);
         
