@@ -83,6 +83,8 @@ public class OI {
     public JoystickButton outTakeJoy;
     public JoystickButton openIntakeJoy;
     public JoystickButton closeIntakeJoy;
+    public JoystickButton liftDownJoy;
+    public JoystickButton liftUpJoy;
     
     public Joystick buttonBox;
 
@@ -106,6 +108,14 @@ public class OI {
         
         closeIntakeJoy = new JoystickButton(leftJoy, 1);
         closeIntakeJoy.whenPressed(new intakeArmsOpen(false));
+        
+        liftDownJoy = new JoystickButton(rightJoy, 3);
+        liftDownJoy.whileHeld(new liftDown(Robot.constants.liftDownPower));
+        liftDownJoy.whenReleased(new liftStop());
+        
+        liftUpJoy = new JoystickButton(rightJoy, 4);
+        liftUpJoy.whileHeld(new liftUp(Robot.constants.liftUpPower));
+        liftUpJoy.whenReleased(new liftStop());
         
         intakeFeedInBtn = new JoystickButton(buttonBox, 1);
         intakeFeedInBtn.whileHeld(new intakeIn(0.9));//whileHeld in case commands get out of order (race condition)
