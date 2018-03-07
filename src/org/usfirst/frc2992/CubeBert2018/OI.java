@@ -109,11 +109,11 @@ public class OI {
         closeIntakeJoy = new JoystickButton(leftJoy, 1);
         closeIntakeJoy.whenPressed(new intakeArmsOpen(false));
         
-        liftDownJoy = new JoystickButton(rightJoy, 3);
+        liftDownJoy = new JoystickButton(rightJoy, 4);
         liftDownJoy.whileHeld(new liftDown(Robot.constants.liftDownPower));
         liftDownJoy.whenReleased(new liftStop());
         
-        liftUpJoy = new JoystickButton(rightJoy, 4);
+        liftUpJoy = new JoystickButton(rightJoy, 3);
         liftUpJoy.whileHeld(new liftUp(Robot.constants.liftUpPower));
         liftUpJoy.whenReleased(new liftStop());
         
