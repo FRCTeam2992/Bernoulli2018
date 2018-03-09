@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
     Command autonomousCommand;
     public static String autoName;
     public static int autoCommandNum;
-    public static String gameData = "   ";// need blank string so can "read" something when called
+    public static String gameData = "";// need blank string so can "read" something when called
     public static String autoPath = "Do Nothing";// to send command group info to smartDashboard
 
     
@@ -112,7 +112,20 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	int retries = 100;
+        while (gameData.length() < 2 && retries > 0) {
+            DriverStation.reportError("Gamedata is " + gameData + " retrying " + retries, false);
+            try {
+                Thread.sleep(5);
+                gameData = DriverStation.getInstance().getGameSpecificMessage();
+                if (gameData==null) { gameData = ""; }
+            } catch (Exception e) {
+            }
+            retries--;
+        }
+    	
+    	
 		RobotMap.navx.zeroYaw();//this is to make the gyro yaw==0;
     	intake.intakeStop();
     	intake.intakeArmsOpen(false);

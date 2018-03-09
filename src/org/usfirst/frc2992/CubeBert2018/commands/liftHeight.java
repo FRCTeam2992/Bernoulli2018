@@ -69,7 +69,7 @@ public class liftHeight extends Command {
     @Override
     protected boolean isFinished() {
     	// We are done if either reached our target or we time out
-    	return ( (Robot.constants.liftEncoder && Robot.lift.atHeight()) || liftTime.get() > m_timeOut);
+    	return (  Robot.lift.atHeight() || liftTime.get() > m_timeOut);
     }
 
     // Called once after isFinished returns true

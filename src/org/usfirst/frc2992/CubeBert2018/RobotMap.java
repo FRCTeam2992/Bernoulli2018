@@ -186,8 +186,8 @@ public class RobotMap {
         liftClimberliftEnc.setPIDSourceType(PIDSourceType.kDisplacement);
         
         // PID Controller for cube lift
-        liftPID = new PIDController(0.6, 0, 0.01, liftClimberliftEnc, liftClimberliftMotor);
-        liftPID.setAbsoluteTolerance(0.5);		// Inches which is the output of scaled encoder
+        liftPID = new PIDController(0.6, 0, 0.02, liftClimberliftEnc, liftClimberliftMotor);
+        liftPID.setAbsoluteTolerance(1.5);		// Inches which is the output of scaled encoder
         LiveWindow.add(liftPID);
         
         liftClimberclimbMotor1 = new WPI_VictorSPX(4);
@@ -198,6 +198,7 @@ public class RobotMap {
         liftClimberclimbMotor2.setName("Climb motor 2");
         LiveWindow.add(liftClimberclimbMotor1);
         LiveWindow.add(liftClimberclimbMotor2);
+        liftClimberclimbMotor2.setInverted(true);
         liftClimberclimbMotor1.setNeutralMode(NeutralMode.Brake);
         liftClimberclimbMotor2.setNeutralMode(NeutralMode.Brake);
         

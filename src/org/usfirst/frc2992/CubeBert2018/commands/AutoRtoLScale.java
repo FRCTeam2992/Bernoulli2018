@@ -32,8 +32,9 @@ public class AutoRtoLScale extends CommandGroup {
     	addSequential(new AutoDriveTurn(-90,0.8,2));
     	addSequential(new AutoDriveFwd(222,0.8,4.0,true,-90));
     	addSequential(new AutoDriveTurn(20,0.8,2));
+    	addSequential(new liftHeight(Robot.constants.switchHeight, 2));
     	addParallel(new intakeDeployed(true));
-    	addSequential(new liftHeight(Robot.constants.topScaleHeight+11,4));
+    	addSequential(new liftHeight(Robot.constants.topScaleHeight,2.5));
     	addSequential(new AutoDriveFwd(37,0.3,3,true,20));
     	addParallel(new intakeOut(1.0));
     	addSequential(new WaitCommand(1.0));

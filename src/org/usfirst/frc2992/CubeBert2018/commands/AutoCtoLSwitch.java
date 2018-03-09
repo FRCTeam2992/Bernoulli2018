@@ -3,6 +3,7 @@ package org.usfirst.frc2992.CubeBert2018.commands;
 import org.usfirst.frc2992.CubeBert2018.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -31,11 +32,16 @@ public class AutoCtoLSwitch extends CommandGroup {
 		addSequential(new AutoDriveTurn(-90,0.8,2.5));
 		addSequential(new AutoDriveFwd(64,0.8,2.5,true,-90));
 		addSequential(new AutoDriveTurn(0,0.8,2.5));
-
+		addSequential(new liftHeight(4, 4.0));
 		addSequential(new intakeDeployed(true));
+		addSequential(new WaitCommand(0.5));
 		addSequential(new liftHeight(Robot.constants.switchHeight+6, 4.0));
+		addParallel(new liftStop());
 		addSequential(new AutoDriveFwd(74,0.5, 3,true,0));
-		addSequential(new intakeOut(1.0));
+		addParallel(new intakeArmsOpen(true));
+		addParallel(new intakeOut(1.0));
+		addSequential(new WaitCommand(1.0));
+		addParallel(new intakeStop());
     
     }
 }

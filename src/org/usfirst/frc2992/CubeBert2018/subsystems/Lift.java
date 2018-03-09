@@ -53,7 +53,7 @@ public class Lift extends Subsystem {
     private final double liftDownPower = Robot.constants.liftDownPower;
     
     private double liftBottomEncVal = 0.0;		// Assume we start at the bottom
-    private final double liftMaxTravel = 42.0;		// Inches we can move bottom to top
+    private final double liftMaxTravel = 32.0;		// Inches we can move bottom to top
    
     @Override
     public void initDefaultCommand() {
@@ -147,6 +147,16 @@ public class Lift extends Subsystem {
     	liftPID.enable();
     }
    
+    public void holdPosn(double height) {
+    	height = Math.max(0.0, Math.min(liftMaxTravel, height));  // 0 <= height <= liftMaxTravel
+    	// And offset it by the current bottom of lift encoder offset
+    	
+    	
+    	// And we are ready to drive the PID
+    	liftPID.setSetpoint(height);
+    	liftPID.enable();
+    }
+    
     public boolean atHeight() {
     	return liftPID.onTarget();
     }

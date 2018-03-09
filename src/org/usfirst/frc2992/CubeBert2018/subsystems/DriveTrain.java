@@ -241,7 +241,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void tankDrive(double left, double right) {
-    	
+    	/*
     	double zRotation = (left-right)/2.0;
     	double xSpeed = right+left/2.0;
     	
@@ -269,7 +269,17 @@ public class DriveTrain extends Subsystem {
             right = xSpeed - zRotation;
           }
         }
-        
+        */
+    	
+    	double lrAvg = (left+right)/2.0;
+    	double lrDiff = Math.abs(left-right);
+    	
+    	// Dampen turns by pushing left and right powers slightly toward the average
+    	
+    	left = (left + 0.8 * left + 1.2 * lrAvg) / 3.0;
+    	right = (right + 0.8 * right + 1.2 * lrAvg) / 3.0;
+    	
+    	
         right = Math.max(-1.0, Math.min(1.0,  right));
         left = Math.max(-1.0, Math.min(1.0,  left));
         
