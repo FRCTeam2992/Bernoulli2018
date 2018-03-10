@@ -46,27 +46,29 @@ public class liftStop extends Command {
     	this.setInterruptible(true);
     	stopTimer.reset();
     	stopTimer.start();
-    	if (Robot.constants.liftEncoder) {
-    		position = RobotMap.liftClimberliftEnc.getDistance();
-    		Robot.lift.holdPosn(position);
-    	} else {
+    	Robot.lift.stopLift();
+    	//if (Robot.constants.liftEncoder) {
+    	//	position = RobotMap.liftClimberliftEnc.getDistance();
+    	//	Robot.lift.holdPosn(position);
+    	//} else {
     		Robot.lift.liftUp(0.1);
     		
-    	}
+    	//}
 
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	if (stopTimer.get() < 30 && !Robot.oi.climbMasterEnableBtn.get()) {
-    		
+    	//if (stopTimer.get() < 30 && !Robot.oi.climbMasterEnableBtn.get()) {
+    	if (stopTimer.get() < 30) {
+	
     		// Don't do backdrive prevention if in climbing mode
-    		if (Robot.constants.liftEncoder) {
-        		Robot.lift.holdPosn(position);
-        	} else {
-        		Robot.lift.liftUp(0.1);        		
-        	}
+    		//if (Robot.constants.liftEncoder) {
+    		//Robot.lift.holdPosn(position);
+        	//} else {
+        	Robot.lift.liftUp(0.1);        		
+        	//}
 
 
     	} else {

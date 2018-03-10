@@ -118,7 +118,7 @@ public class Lift extends Subsystem {
     }
 
     public void downLift(double speed) {
-    	liftPID.disable();
+    	//liftPID.disable();
     	if(!liftBottomSensor.get()==true) {//make sure lift won't keep running down when reaches bottom
     		stopLift();
     	}
@@ -127,11 +127,11 @@ public class Lift extends Subsystem {
     	}
     }
     public void liftUp(double speed) {
-    	liftPID.disable();
+    	//liftPID.disable();
     	//make sure lift won't keep going up when reaches very top.
     	
     	if(!liftTopSensor.get()==true ) {
-    		liftMotor.set(0.1);
+    		stopLift();
     	}
     	else {
     			liftMotor.set(Math.max(speed, 0));//make sure speed is pos

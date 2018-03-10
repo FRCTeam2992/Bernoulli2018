@@ -27,9 +27,9 @@ public class AutoIntakeReady extends CommandGroup {
         // arm.
     	
     	// Sequence of steps to get the intake safely deployed off the start hook
-		addSequential(new liftHeight(4, 4.0));
+		addSequential(new liftHeight(7, 4.0));
 		addSequential(new intakeDeployed(true));
-		addSequential(new WaitCommand(0.5));
+		addSequential(new WaitCommand(0.75));
 
     }
 }
