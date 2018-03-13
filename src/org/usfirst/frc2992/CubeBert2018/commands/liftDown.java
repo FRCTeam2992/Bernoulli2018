@@ -12,6 +12,7 @@
 package org.usfirst.frc2992.CubeBert2018.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2992.CubeBert2018.Robot;
+import org.usfirst.frc2992.CubeBert2018.RobotMap;
 
 /**
  *
@@ -47,7 +48,12 @@ public class liftDown extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.lift.downLift(m_speed);
+    	if (Robot.oi.climbMasterEnableBtn.get()) {
+    		// We are in climb mode so go slower down
+    		Robot.lift.downLift(-0.3);
+    	} else {
+        	Robot.lift.downLift(m_speed);    		
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -79,18 +79,18 @@ public class Lift extends Subsystem {
     	
     	// Make sure the lift PID motors aren't pushing us past the limit switches
     	//dont have to do ==true. redundant
-    	if (!liftTopSensor.get() && !liftBottomSensor.get()) {
+    	if (!liftTopSensor.get() && !liftBottomSensor.get() && !Robot.oi.smallClimbSpeedBtn.get()) {
     		// Should never get here -- broken switch so disable auto moves
     		liftPID.setOutputRange(0.0,  0.0);
     	}
-    	else if (!liftTopSensor.get()) {
+    	else if (!liftTopSensor.get() && !Robot.oi.smallClimbSpeedBtn.get()) {
     		// At top so only allow PID driving down
     		liftPID.setOutputRange(liftDownPower, 0.0);
     		// And reset the encoder reference for bottom of lift
     		// Bottom is our current encoder reading minus height of lift
     		liftBottomEncVal = liftEnc.getDistance() - liftMaxTravel;
     	} 
-    	else if (!liftBottomSensor.get()) {
+    	else if (!liftBottomSensor.get() && !Robot.oi.smallClimbSpeedBtn.get()) {
     		// At bottom so only allow PID driving up
     		liftPID.setOutputRange(0.0,  LiftUpPower);
     		// Reset bottom of lift reference to our current position
@@ -119,7 +119,7 @@ public class Lift extends Subsystem {
 
     public void downLift(double speed) {
     	//liftPID.disable();
-    	if(!liftBottomSensor.get()==true) {//make sure lift won't keep running down when reaches bottom
+    	if(!liftBottomSensor.get()==true && !Robot.oi.smallClimbSpeedBtn.get()) {//make sure lift won't keep running down when reaches bottom
     		stopLift();
     	}
     	else {
@@ -130,7 +130,7 @@ public class Lift extends Subsystem {
     	//liftPID.disable();
     	//make sure lift won't keep going up when reaches very top.
     	
-    	if(!liftTopSensor.get()==true ) {
+    	if(!liftTopSensor.get()==true && !Robot.oi.smallClimbSpeedBtn.get() ) {
     		stopLift();
     	}
     	else {
