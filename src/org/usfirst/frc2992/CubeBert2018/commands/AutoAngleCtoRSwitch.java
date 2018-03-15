@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AutoAngleCenterSwitch extends CommandGroup {
+public class AutoAngleCtoRSwitch extends CommandGroup {
 	//for auto stuff do commandgroup so can sequence other commands
 	
-    public AutoAngleCenterSwitch() {
+    public AutoAngleCtoRSwitch() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,18 +29,23 @@ public class AutoAngleCenterSwitch extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    
-    	addSequential(new AutoDriveFwd(20,0.8,3,true,0));
-    	addSequential(new AutoDriveTurn(-33.27,0.8,2));
-    	addSequential(new AutoDriveFwd(76.55,0.8,8,true,-33.27));
-    	addSequential(new AutoDriveTurn(0,0.8,2));
-    	addParallel(new AutoIntakeReady());
+
+    	/*
+    	addSequential(new AutoIntakeReady());
     	addSequential(new liftHeight(Robot.constants.switchHeight+5,3));
-    	addParallel(new liftStop());
+    	addParallel(new liftStop());// parallel bc otherwise wouldnt go on - return false to isfinished
+    	addSequential(new AutoDriveFwd(20+76.55,0.8,3,true,-33.27));
+    	*/
+    	addSequential(new AutoSwitchLiftRight());
+    	addParallel(new liftStop());// parallel bc otherwise wouldnt go on - return false to isfinished
+
+    	//addSequential(new AutoDriveTurn(-33.27,0.8,2));
+    	//addSequential(new AutoDriveFwd(76.55,0.8,8,true,-33.27));
+    	//addSequential(new AutoDriveTurn(0,0.8,2));
     	addSequential(new AutoDriveFwd(42,0.8,5,true,0));
     	addSequential(new intakeOut(1.0));
     	addSequential(new WaitCommand(1.0));
-    	addSequential(new intakeStop());
+    	addParallel(new intakeStop());
     	
     }
 }

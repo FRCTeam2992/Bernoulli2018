@@ -32,12 +32,14 @@ public class AutoCenterSwitch extends CommandGroup {
     	
     	if(gameData.length() > 0){
     		if(gameData.charAt(0) == 'L'){
+    			//addSequential(new AutoAngleCtoLSwitch());
     			addSequential(new AutoCtoLSwitch());
     			Robot.autoPath = "AutoCtoLSwitch";//can't send stuff to SmartDashboard in a commandGroup.
     			return;
     			// autoPath a way to send the info to smartdashboard - sent in Robot
     		}
     		else if(gameData.charAt(0)=='R') {
+    			//addSequential(new AutoAngleCtoRSwitch());
     			addSequential(new AutoCtoRSwitch());
     			Robot.autoPath =  "AutoCtoRSwitch";
     			return;

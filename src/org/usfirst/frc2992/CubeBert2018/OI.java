@@ -162,7 +162,7 @@ public class OI {
         tensionClimbBtn.whileHeld(new climbStart(1.0));
         tensionClimbBtn.whenReleased(new climbStop());
         
-        smallClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to high
+        smallClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to replace limit switch - in case breaks
         //smallClimbSpeedBtn.whenPressed(new climbStart(1.0));
         //smallClimbSpeedBtn.whenReleased(new climbStop());
         
