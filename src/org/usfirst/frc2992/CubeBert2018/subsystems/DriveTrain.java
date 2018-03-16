@@ -73,7 +73,7 @@ public class DriveTrain extends Subsystem {
     final double hdkd = .35;
     
     //gyro pid
-    double gkp = .03; 
+    double gkp = .01; 
     double gkd = .0;
     double gError = 0.0;
     
@@ -214,7 +214,7 @@ public class DriveTrain extends Subsystem {
 
     public boolean driveDone(String type){//for pid to see if drive fwd or drive turn is finished
     	if(type == "dist"){
-    		if(lDistPID.onTarget() && rDistPID.onTarget()){
+    		if(lDistPID.onTarget() || rDistPID.onTarget()){//&&
     			return true;
     		} else {
     			return false;
