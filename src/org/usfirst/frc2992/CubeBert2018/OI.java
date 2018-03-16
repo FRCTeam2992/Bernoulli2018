@@ -65,7 +65,7 @@ public class OI {
     public JoystickButton liftCubeUpBtn;
     public JoystickButton liftCubeDownBtn;
     public JoystickButton groundLevelBtn;
-    public JoystickButton switchLevelBtn;
+    public JoystickButton rampDeployBtn;
     public JoystickButton newRevClimbBtn;
     public JoystickButton tensionClimbBtn;//lifts to climbing height
     
@@ -147,8 +147,8 @@ public class OI {
        groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
         
         
-        switchLevelBtn = new JoystickButton(buttonBox, 9);
-        switchLevelBtn.whenPressed(new liftHeight(Robot.constants.switchHeight, 4.0));
+        rampDeployBtn = new JoystickButton(buttonBox, 9);
+        rampDeployBtn.whenPressed(new rampDeploy(true));
         
         newRevClimbBtn = new JoystickButton(buttonBox, 10);
         //the dist is how high the first stage of the lift is gonna go-actually twice the height bc 2 stages away
@@ -174,7 +174,6 @@ public class OI {
         //scaleClampBtn.whenPressed(new ScaleClampDeploy(true));
         
         climbMasterEnableBtn = new JoystickButton(buttonBox,15);
-        //rampDeployBtn.whenPressed(new rampDeploy(true));
         
         autoA = new JoystickButton(buttonBox, 16);
         

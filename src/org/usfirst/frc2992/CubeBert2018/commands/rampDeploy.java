@@ -39,7 +39,10 @@ public class rampDeploy extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.climber.deployRamps(m_deploy);
+    	// Only deploy if we are already in climber mode
+    	if (Robot.oi.climbMasterEnableBtn.get()) {
+    		Robot.climber.deployRamps(m_deploy);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
