@@ -53,7 +53,7 @@ public class Lift extends Subsystem {
     private final double liftDownPower = Robot.constants.liftDownPower;
     
     private double liftBottomEncVal = 0.0;		// Assume we start at the bottom
-    private final double liftMaxTravel = 32.0;		// Inches we can move bottom to top
+    private final double liftMaxTravel = 36.0;		// Inches we can move bottom to top
    
     @Override
     public void initDefaultCommand() {

@@ -42,7 +42,7 @@ public class AutoLAnyScale extends CommandGroup {
 		}
 
 		//we didn't get the info
-		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,5,true,0));
+		addSequential(new AutoDriveFwd(Robot.constants.autoPastSwitchDist,0.5,5,true,0));
 		Robot.autoPath = "AutoCrossLine";
 
 	}

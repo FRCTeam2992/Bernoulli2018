@@ -36,7 +36,7 @@ public class AutoLCloseScaleOnly extends CommandGroup {
 				return;
 			}
 		}
-		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist,0.5,10,true,0));//auto cross line
+		addSequential(new AutoDriveFwd(Robot.constants.autoPastSwitchDist,0.5,10,true,0));//auto cross line
 		Robot.autoPath = "AutoCrossLine";
 
 

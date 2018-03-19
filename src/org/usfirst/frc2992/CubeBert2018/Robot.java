@@ -194,7 +194,7 @@ public class Robot extends TimedRobot {
     			autoPath = "Do Nothing";
     			break; 
     			
-    	case 1: autonomousCommand = new AutoDriveFwd(constants.autoCrossLineDist,1.0,10,true,0);
+    	case 1: autonomousCommand = new AutoDriveFwd(Robot.constants.autoCrossLineDist,1.0,10,true,0);
     			autoName = "Go Forward - Never in Center!!";
     			autoPath = "AutoDriveFwd";
     			break;
@@ -251,6 +251,10 @@ public class Robot extends TimedRobot {
 				autoName = "Right, Right scale or switch";
 				break;
 
+    	case 15: autonomousCommand = new AutoAngleCenterSwitch();
+    			autoName = "Angle Center Switch";
+    			break;
+				
     	//set default so if num created is not specified - do default		
     	default: autonomousCommand = new AutoDriveStop(); 
 				autoName = "Do Nothing";

@@ -27,15 +27,15 @@ public class AutoRtoRScale extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutoDriveFwd(300, 0.8, 3, true, 0));
+    	addSequential(new AutoDriveFwd(260, 0.5, 3, true, 0));
     	addSequential(new AutoIntakeReady());
-    	addSequential(new liftHeight(Robot.constants.topScaleHeight, 2.5));
+    	addSequential(new liftHeight(36, 4));
     	addParallel(new liftStop());    	
-    	addSequential(new AutoDriveTurn(-90, 0.8, 3));
-    	addSequential(new AutoDriveFwd(24, 0.3, 3, true, -90));
+    	addSequential(new AutoDriveTurn(-45, 0.8, 3));
+    	addSequential(new AutoDriveFwd(12, 0.3, 3, true, -45));
     	addParallel(new intakeOut(1.0));
     	addSequential(new WaitCommand(1.0));
-    	addSequential(new AutoDriveFwd(-24, 0.3, 3, true, -90));
+    	addSequential(new AutoDriveFwd(-12, 0.3, 3, true, -45));
     	addParallel(new intakeStop());
     }
 }

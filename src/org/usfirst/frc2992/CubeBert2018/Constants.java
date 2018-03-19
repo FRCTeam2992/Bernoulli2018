@@ -3,9 +3,10 @@ package org.usfirst.frc2992.CubeBert2018;
 public class Constants {
 	public final double switchHeight = 22/2;//in inches. /2 bc actual height is half since 2 stages away 
 	public final double midScaleHeight = 62/2;//in inches
-	public final double topScaleHeight = midScaleHeight;
+	public final double topScaleHeight = 68/2;
 	public final double climbHeight = 23;
-	public final double autoCrossLineDist = 209;//only for L/R positions 
+	public final double autoPastSwitchDist = 209;//only for L/R positions 
+	public final double autoCrossLineDist = 160;
 	
 	
 	public static final double driveEncDistPerPulse = (8* 3.14 * 20) / (128 * 64 * 3);// diameter[6] * PI[3.14]  / PPR[128] / Gear Box constant[3] / Gear Ratio[64:20] -- inches

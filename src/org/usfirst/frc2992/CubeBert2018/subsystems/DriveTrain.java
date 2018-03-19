@@ -70,7 +70,7 @@ public class DriveTrain extends Subsystem {
     final double ldkd = .15;
     final double hdkp = .045;
     final double hdki = 0;
-    final double hdkd = .35;
+    final double hdkd = .15;
     
     //gyro pid
     double gkp = .01; 
@@ -103,7 +103,7 @@ public class DriveTrain extends Subsystem {
     	lDistPID.setOutputRange(-0.8, 0.8);
     	//lDistPID.setInputRange(-321.0, 321.0);
     	//lDistPID.setPercentTolerance(5.0);
-    	lDistPID.setAbsoluteTolerance(1.0);
+    	lDistPID.setAbsoluteTolerance(2.0);
     	lDistPID.setName("Left Dist PID");
     	LiveWindow.add(lDistPID);
     	
@@ -113,7 +113,7 @@ public class DriveTrain extends Subsystem {
     	rDistance = new DrivePID(RobotMap.rightmotors);
     	rDistPID = new PIDController(ldkp, ldki, ldkd, rightDriveEnc, rDistance);
     	rDistPID.setOutputRange(-0.8, 0.8);
-    	rDistPID.setAbsoluteTolerance(1.0);
+    	rDistPID.setAbsoluteTolerance(2.0);
     	//rDistPID.setInputRange(-321.0, 321.0);
     	//rDistPID.setPercentTolerance(5.0);
     	rDistPID.setName("Right Dist PID");

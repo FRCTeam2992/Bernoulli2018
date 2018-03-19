@@ -42,7 +42,8 @@ public class AutoAngleCtoRSwitch extends CommandGroup {
     	//addSequential(new AutoDriveTurn(-33.27,0.8,2));
     	//addSequential(new AutoDriveFwd(76.55,0.8,8,true,-33.27));
     	//addSequential(new AutoDriveTurn(0,0.8,2));
-    	addSequential(new AutoDriveFwd(42,0.8,5,true,0));
+    	addSequential(new AutoDriveFwd(48,0.5,2.5,true,0));
+    	//addSequential(new WaitCommand(2.0));
     	addSequential(new intakeOut(1.0));
     	addSequential(new WaitCommand(1.0));
     	addParallel(new intakeStop());

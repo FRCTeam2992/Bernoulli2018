@@ -30,7 +30,7 @@ public class AutoRCloseScaleOnly extends CommandGroup {
     	
     	if(gameData.length() > 1){
     		if(gameData.charAt(1) == 'L') {
-    			addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.8, 5, true, 0));
+    			addSequential(new AutoDriveFwd(Robot.constants.autoPastSwitchDist, 0.8, 5, true, 0));
     			Robot.autoPath = "AutoCrossLine";
     			return;
     		}
@@ -40,7 +40,7 @@ public class AutoRCloseScaleOnly extends CommandGroup {
     			return;
     		}
     	}
-		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 3, true, 0));
+		addSequential(new AutoDriveFwd(Robot.constants.autoPastSwitchDist, 0.5, 3, true, 0));
 		Robot.autoPath = "AutoCrossLine";
 
     }

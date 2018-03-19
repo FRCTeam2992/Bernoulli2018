@@ -31,12 +31,12 @@ public class AutoCtoRSwitch extends CommandGroup {
     	
 		addSequential(new AutoDriveFwd(30,0.8,2.5,true,0));
 		addSequential(new AutoDriveTurn(90,0.8,2.5));
-		addSequential(new AutoDriveFwd(57,0.8,2.5,true,90));
+		addSequential(new AutoDriveFwd(49,0.8,2.5,true,90));
 		addSequential(new AutoDriveTurn(0,0.8,2.5));
 		addSequential(new AutoIntakeReady());
 		addSequential(new liftHeight(Robot.constants.switchHeight+6, 3.0));
 		addParallel(new liftStop());
-		addSequential(new AutoDriveFwd(74,0.5,3,true,0));
+		addSequential(new AutoDriveFwd(72,0.5,2.5,true,0));
 		addParallel(new intakeOut(1.0));
 		addSequential(new WaitCommand(1.0));
 		addParallel(new intakeStop());
