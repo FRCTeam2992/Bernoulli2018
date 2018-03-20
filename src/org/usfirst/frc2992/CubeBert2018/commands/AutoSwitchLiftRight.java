@@ -26,8 +26,15 @@ public class AutoSwitchLiftRight extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new AutoDriveFwd(78, 0.8, 3, true, 70));//12 in less than left
-    	addSequential(new AutoIntakeReady());
-    	addSequential(new liftHeight(Robot.constants.switchHeight+7,3));
+		addParallel(new AutoDriveTurn(0,0.8,2.5));
+		//addSequential(new AutoIntakeReady());
+		//addSequential(new liftHeight(Robot.constants.switchHeight+6, 3.0));
+
+    	
+    	
+    	addParallel(new AutoDriveTurn(0,0.8,2.5));
+		addSequential(new AutoIntakeReady());
+		addSequential(new liftHeight(Robot.constants.switchHeight+6, 3.0));
+
     }
 }

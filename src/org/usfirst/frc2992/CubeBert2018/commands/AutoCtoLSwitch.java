@@ -31,9 +31,10 @@ public class AutoCtoLSwitch extends CommandGroup {
 		addSequential(new AutoDriveFwd(30,0.8,2.5,true,0));
 		addSequential(new AutoDriveTurn(-90,0.8,2.5));
 		addSequential(new AutoDriveFwd(52,0.8,2.5,true,-90));
-		addSequential(new AutoDriveTurn(0,0.8,2.5));
-		addSequential(new AutoIntakeReady());
-		addSequential(new liftHeight(Robot.constants.switchHeight+6, 3.0));
+		addSequential(new AutoSwitchLift());  // Replaces the following 3 with more parallelism
+		//addSequential(new AutoDriveTurn(0,0.8,2.5));
+		//addSequential(new AutoIntakeReady());
+		//addSequential(new liftHeight(Robot.constants.switchHeight+6, 3.0));
 		addParallel(new liftStop());
 		addSequential(new AutoDriveFwd(72,0.5, 2.5,true,0));
 		addParallel(new intakeOut(1.0));

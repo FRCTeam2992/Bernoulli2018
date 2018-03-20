@@ -153,7 +153,7 @@ public class OI {
         newRevClimbBtn = new JoystickButton(buttonBox, 10);
         //the dist is how high the first stage of the lift is gonna go-actually twice the height bc 2 stages away
         //newRevClimbBtn.whenPressed(new liftHeight(Robot.constants.midScaleHeight, 4.0));
-        newRevClimbBtn.whileHeld(new climbStart(-0.2));
+        newRevClimbBtn.whileHeld(new climbStart(-0.6));
         newRevClimbBtn.whenReleased(new climbStop());
 
         

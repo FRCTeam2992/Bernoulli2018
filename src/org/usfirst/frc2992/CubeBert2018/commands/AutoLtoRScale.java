@@ -28,12 +28,12 @@ public class AutoLtoRScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new AutoDriveFwd(Robot.constants.autoPastSwitchDist+18,0.8,3,true,0));
+    	addSequential(new AutoDriveFwd(Robot.constants.autoPastSwitchDist-6,0.8,3,true,0));
     	addSequential(new AutoDriveTurn(90,0.8,2));
-    	addSequential(new AutoDriveFwd(222,0.8,4.5,true,90));
-    	addSequential(new AutoDriveTurn(-20,0.8,2));
+    	addSequential(new AutoDriveFwd(205,0.8,4.5,true,90));
+    	addParallel(new AutoDriveTurn(-20,0.8,2));
     	addSequential(new AutoIntakeReady());
-    	addSequential(new liftHeight(Robot.constants.topScaleHeight,2.5));
+    	addSequential(new liftHeight(36,3.5));
     	addParallel(new liftStop());
     	addSequential(new AutoDriveFwd(37,0.3,3,true,-20));
     	addParallel(new intakeOut(1.0));

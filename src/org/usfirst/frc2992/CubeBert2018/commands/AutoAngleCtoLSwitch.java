@@ -36,13 +36,13 @@ public class AutoAngleCtoLSwitch extends CommandGroup {
     	addParallel(new liftStop());// parallel bc otherwise wouldnt go on - return false to isfinished
     	addSequential(new AutoDriveFwd(20+76.55,0.8,3,true,-33.27));
     	*/
-    	addSequential(new AutoSwitchLiftLeft());
+    	addSequential(new AutoAngleSwitchLiftLeft());
     	addParallel(new liftStop());// parallel bc otherwise wouldnt go on - return false to isfinished
 
     	//addSequential(new AutoDriveTurn(-33.27,0.8,2));
     	//addSequential(new AutoDriveFwd(76.55,0.8,8,true,-33.27));
     	//addSequential(new AutoDriveTurn(0,0.8,2));
-    	addSequential(new AutoDriveFwd(66,0.5,2.5,true,0));
+    	addSequential(new AutoDriveFwd(62,0.5,3.5,true,0));
     	addSequential(new intakeOut(1.0));
     	addSequential(new WaitCommand(1.0));
     	addParallel(new intakeStop());

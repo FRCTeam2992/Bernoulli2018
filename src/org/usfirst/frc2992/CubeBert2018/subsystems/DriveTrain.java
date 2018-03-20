@@ -68,7 +68,7 @@ public class DriveTrain extends Subsystem {
     final double ldkp = .085	;
     final double ldki = 0;
     final double ldkd = .15;
-    final double hdkp = .045;
+    final double hdkp = .035;
     final double hdki = 0;
     final double hdkd = .15;
     

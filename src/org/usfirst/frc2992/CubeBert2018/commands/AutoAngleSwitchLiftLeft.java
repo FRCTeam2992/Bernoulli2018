@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoSwitchLiftLeft extends CommandGroup {
+public class AutoAngleSwitchLiftLeft extends CommandGroup {
 
-    public AutoSwitchLiftLeft() {
+    public AutoAngleSwitchLiftLeft() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,7 +26,7 @@ public class AutoSwitchLiftLeft extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new AutoDriveFwd(64,0.8,3,true,-70));
+    	addParallel(new AutoDriveFwd(60,0.8,3,true,-60));
     	addSequential(new AutoIntakeReady());
     	addSequential(new liftHeight(Robot.constants.switchHeight+7,3));
 
