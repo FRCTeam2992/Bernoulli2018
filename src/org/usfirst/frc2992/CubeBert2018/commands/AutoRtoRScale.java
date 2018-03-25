@@ -29,7 +29,7 @@ public class AutoRtoRScale extends CommandGroup {
         // arm.
     	addSequential(new AutoDriveFwd(262, 0.5, 4, true, 0));
     	addSequential(new AutoIntakeReady());
-    	addSequential(new liftHeight(36, 4));
+    	addSequential(new liftHeight(35.5, 4));
     	addParallel(new liftStop());    	
     	addSequential(new AutoDriveTurn(-60, 0.8, 3));
     	addSequential(new AutoDriveFwd(12, 0.3, 3, true, -60));

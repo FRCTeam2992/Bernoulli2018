@@ -159,7 +159,7 @@ public class OI {
         
         tensionClimbBtn = new JoystickButton(buttonBox, 11);
         //climbingPosBtn.whenPressed(new liftHeight(Robot.constants.climbHeight, 4.0));//liftHeight(dist,time) 
-        tensionClimbBtn.whileHeld(new climbStart(1.0));
+        tensionClimbBtn.whileHeld(new climbStart(0.9));
         tensionClimbBtn.whenReleased(new climbStop());
         
         smallClimbSpeedBtn = new JoystickButton(buttonBox, 12);//change to replace limit switch - in case breaks

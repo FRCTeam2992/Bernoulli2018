@@ -198,6 +198,7 @@ public class RobotMap {
         liftClimberclimbMotor2.setName("Climb motor 2");
         LiveWindow.add(liftClimberclimbMotor1);
         LiveWindow.add(liftClimberclimbMotor2);
+        liftClimberclimbMotor1.setInverted(true);
         liftClimberclimbMotor2.setInverted(true);
         liftClimberclimbMotor1.setNeutralMode(NeutralMode.Brake);
         liftClimberclimbMotor2.setNeutralMode(NeutralMode.Brake);

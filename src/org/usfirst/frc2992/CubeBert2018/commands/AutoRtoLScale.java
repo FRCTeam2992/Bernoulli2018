@@ -33,7 +33,7 @@ public class AutoRtoLScale extends CommandGroup {
     	addSequential(new AutoDriveFwd(205,0.8,4.0,true,-90));
     	addParallel(new AutoDriveTurn(20,0.8,2));
     	addSequential(new AutoIntakeReady());
-    	addSequential(new liftHeight(36,3.5));
+    	addSequential(new liftHeight(35.5,3.5));
     	addParallel(new liftStop());
     	addSequential(new AutoDriveFwd(37,0.3,3,true,20));
     	addParallel(new intakeOut(1.0));
