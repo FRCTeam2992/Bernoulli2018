@@ -37,5 +37,7 @@ public class AutoRtoRScale extends CommandGroup {
     	addSequential(new WaitCommand(1.0));
     	addSequential(new AutoDriveFwd(-12, 0.3, 3, true, -60));
     	addParallel(new intakeStop());
+    	addParallel(new liftHeight(0, 5));
+    	addSequential(new AutoDriveTurn(-135, 0.3, 3));
     }
 }
