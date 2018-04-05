@@ -111,15 +111,15 @@ public class Intake extends Subsystem {
 		}
 	}
 
-	public void intakeOut(double speed){
-		if(intakeDeploySol.get()==true) {
+	public void intakeOut(double speed){//just make it outake no matter what so can outtake to 2nd losing scale level
+		//if(intakeDeploySol.get()==true) {
 			speed = Math.max(0.0,  Math.min(1.0, speed));  // Enforce 0.0 <= speed <= 1.0
 			leftIntakeMotor.set(-speed);
 			rightIntakeMotor.set(-speed);
-		}
-		else {
-			intakeStop();
-		}
+		//}
+		//else {
+			//intakeStop();
+		//}
 	}
 	public void intakeStop(){
 
