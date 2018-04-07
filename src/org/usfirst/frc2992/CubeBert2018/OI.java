@@ -144,7 +144,7 @@ public class OI {
         liftCubeDownBtn.whenReleased(new liftStop());
         
         groundLevelBtn = new JoystickButton(buttonBox, 8);
-       groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
+        groundLevelBtn.whenPressed(new liftHeight(0.0, 4.0));
         
         
         rampDeployBtn = new JoystickButton(buttonBox, 9);

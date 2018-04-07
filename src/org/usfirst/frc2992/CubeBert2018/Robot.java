@@ -16,6 +16,7 @@ package org.usfirst.frc2992.CubeBert2018;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -98,6 +99,7 @@ public class Robot extends TimedRobot {
     @Override
     public void disabledInit(){
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
+    	RobotMap.rampDeployRelay.set(Value.kOff);
 
     }
 
@@ -112,6 +114,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
+    	RobotMap.rampDeployRelay.set(Value.kOff);
     	gameData = DriverStation.getInstance().getGameSpecificMessage();
     	int retries = 100;
         while (gameData.length() < 2 && retries > 0) {
@@ -151,6 +154,7 @@ public class Robot extends TimedRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
+    	RobotMap.rampDeployRelay.set(Value.kOff);
     	intake.intakeStop();
     	intake.intakeArmsOpen(false);
     	intake.deployIntake(false);

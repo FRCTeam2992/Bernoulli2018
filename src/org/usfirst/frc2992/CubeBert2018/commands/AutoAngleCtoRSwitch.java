@@ -44,30 +44,31 @@ public class AutoAngleCtoRSwitch extends CommandGroup {
     	//addSequential(new AutoDriveTurn(0,0.8,2));
     	addSequential(new AutoDriveFwd(40,0.5,3.5,true,0));//dist used to be 48
     	//addSequential(new WaitCommand(2.0));
-    	addSequential(new intakeOut(1.0));
+    	addParallel(new intakeOut(1.0));
     	addSequential(new WaitCommand(1.0));
     	addParallel(new intakeStop());
+    	
     	//un-comment next part for a double cube auto
-    	/*
+    	
     	addSequential(new AutoDriveFwd(-33, 0.5, 3, true, 0));
     	addParallel(new liftHeight(0, 3));
     	addSequential(new AutoDriveTurn(-90, 0.5, 3));
-    	addPArallel(new liftStop));
+    	addParallel(new liftStop());
     	addParallel(new intakeArmsOpen(true));
+    	addParallel(new intakeIn(1));
     	addSequential(new AutoDriveFwd(20, 0.5, 3, true, -90));//change value 
-    	addSequential(new intakeIn(1));
-    	addSequential(new WaitCommand(1));
-    	addParallel(new intakeStop());
+    	//addSequential(new WaitCommand(1));
     	addSequential(new intakeArmsOpen(false));
     	addSequential(new AutoDriveFwd(-20, 0.5, 3, true, -90));
+    	addParallel(new intakeStop());
     	addParallel(new liftHeight(Robot.constants.switchHeight+5, 3));
     	addSequential(new AutoDriveTurn(0, 0.5, 3));
-    	addParallel(new liftStop));
+    	addParallel(new liftStop());
     	addSequential(new AutoDriveFwd(35, 0.5, 3, true, 0));
-    	addSequential(new intakeOut(1);
+    	addParallel(new intakeOut(1));
     	addSequential(new WaitCommand(1));
-    	addParallel(new intakeStop));
-    	*/
+    	addParallel(new intakeStop());
+    	
     	
     }
 }
