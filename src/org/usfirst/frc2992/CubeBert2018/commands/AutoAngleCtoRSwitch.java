@@ -42,7 +42,7 @@ public class AutoAngleCtoRSwitch extends CommandGroup {
     	//addSequential(new AutoDriveTurn(-33.27,0.8,2));
     	//addSequential(new AutoDriveFwd(76.55,0.8,8,true,-33.27));
     	//addSequential(new AutoDriveTurn(0,0.8,2));
-    	addSequential(new AutoDriveFwd(40,0.5,3.5,true,0));//dist used to be 48
+    	addSequential(new AutoDriveFwd(43,0.5,3.5,true,0));//dist used to be 48
     	//addSequential(new WaitCommand(2.0));
     	addParallel(new intakeOut(1.0));
     	addSequential(new WaitCommand(1.0));
@@ -50,21 +50,23 @@ public class AutoAngleCtoRSwitch extends CommandGroup {
     	
     	//un-comment next part for a double cube auto
     	
-    	addSequential(new AutoDriveFwd(-33, 0.5, 3, true, 0));
-    	addParallel(new liftHeight(0, 3));
-    	addSequential(new AutoDriveTurn(-90, 0.5, 3));
-    	addParallel(new liftStop());
+    	addSequential(new AutoDriveFwd(-50, 0.8, 3, true, 0));
+    	addParallel(new liftHeight(0, 5));
+    	addSequential(new AutoDriveTurn(-60, 0.8, 3));
+    	//addParallel(new liftStop());
     	addParallel(new intakeArmsOpen(true));
     	addParallel(new intakeIn(1));
-    	addSequential(new AutoDriveFwd(20, 0.5, 3, true, -90));//change value 
-    	//addSequential(new WaitCommand(1));
+    	addSequential(new AutoDriveFwd(45, 0.4, 3, true, -60));//change value 
+    	addParallel(new AutoDriveFwd(6, 0.4, 3, true, -90));
+    	//addSequential(new WaitCommand(0.3));
     	addSequential(new intakeArmsOpen(false));
-    	addSequential(new AutoDriveFwd(-20, 0.5, 3, true, -90));
+    	addSequential(new WaitCommand(0.7));
+    	addSequential(new AutoDriveFwd(-40, 0.8, 3, true, -60));
     	addParallel(new intakeStop());
     	addParallel(new liftHeight(Robot.constants.switchHeight+5, 3));
-    	addSequential(new AutoDriveTurn(0, 0.5, 3));
+    	addSequential(new AutoDriveTurn(0, 0.8, 3));
+    	addSequential(new AutoDriveFwd(50, 0.8, 3, true, 0));
     	addParallel(new liftStop());
-    	addSequential(new AutoDriveFwd(35, 0.5, 3, true, 0));
     	addParallel(new intakeOut(1));
     	addSequential(new WaitCommand(1));
     	addParallel(new intakeStop());
