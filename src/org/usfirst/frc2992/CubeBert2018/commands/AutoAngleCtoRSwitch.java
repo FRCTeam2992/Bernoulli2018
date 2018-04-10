@@ -51,7 +51,7 @@ public class AutoAngleCtoRSwitch extends CommandGroup {
     	//un-comment next part for a double cube auto
     	
     	addSequential(new AutoDriveFwd(-50, 0.8, 3, true, 0));
-    	addParallel(new liftHeight(0, 5));
+    	addParallel(new liftHeight(0, 3));
     	addSequential(new AutoDriveTurn(-60, 0.8, 3));
     	//addParallel(new liftStop());
     	addParallel(new intakeArmsOpen(true));

@@ -48,21 +48,21 @@ public class AutoAngleCtoLSwitch extends CommandGroup {
     	addParallel(new intakeStop());
     	//un-comment next part for a double cube auto
     	
-    	addSequential(new AutoDriveFwd(-50, 0.5, 3, true, 0));
+    	addSequential(new AutoDriveFwd(-50, 0.8, 3, true, 0));
     	addParallel(new liftHeight(0, 3));
-    	addSequential(new AutoDriveTurn(60, 0.5, 3));
+    	addSequential(new AutoDriveTurn(60, 0.8, 3));
     	//addParallel(new liftStop());
     	addParallel(new intakeArmsOpen(true));
     	addParallel(new intakeIn(1));
-    	addSequential(new AutoDriveFwd(45, 0.5, 3, true, 60));//change value
+    	addSequential(new AutoDriveFwd(45, 0.8, 3, true, 60));//change value
     	addParallel(new AutoDriveFwd(6,0.4,2,true,90));
     	addSequential(new intakeArmsOpen(false));
     	addSequential(new WaitCommand(0.7));
-    	addSequential(new AutoDriveFwd(-45, 0.5, 3, true, 60));
+    	addSequential(new AutoDriveFwd(-45, 0.8, 3, true, 60));
     	addParallel(new intakeStop());
     	addParallel(new liftHeight(Robot.constants.switchHeight+5, 3));
-    	addSequential(new AutoDriveTurn(0, 0.5, 3));
-    	addSequential(new AutoDriveFwd(50, 0.5, 3, true, 0));
+    	addSequential(new AutoDriveTurn(0, 0.8, 3));
+    	addSequential(new AutoDriveFwd(50, 0.8, 3, true, 0));
     	addParallel(new liftStop());
     	addParallel(new intakeOut(1));
     	addSequential(new WaitCommand(1));

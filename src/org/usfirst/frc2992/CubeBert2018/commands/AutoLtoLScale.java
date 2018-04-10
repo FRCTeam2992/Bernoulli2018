@@ -39,6 +39,15 @@ public class AutoLtoLScale extends CommandGroup {
     	addParallel(new intakeStop());
     	addParallel(new liftHeight(0, 5));
     	addSequential(new AutoDriveTurn(135, 0.3, 3));
+    	addParallel(new intakeArmsOpen(true));
+    	addSequential(new AutoDriveFwd(30, 0.5, 3, true, 135));
+    	addParallel(new AutoDriveFwd(6, 0.4, 3, true, 90));
+    	addParallel(new intakeIn(1));
+    	addSequential(new WaitCommand(1));
+    	
+    	
+    	
+    	
     	
     }
 }

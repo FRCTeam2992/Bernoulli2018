@@ -29,9 +29,16 @@ public class AutoLAnyScale extends CommandGroup {
 		String gameData = Robot.gameData;
 
 		if(gameData.length() > 1){
-			if(gameData.charAt(1) == 'L') {
+			if(gameData.charAt(0)=='L' && gameData.charAt(1)=='L') {
+				addSequential(new Auto2CubeLScaleSwitch());
+				Robot.autoPath = "2CubeAutoLScaleLSwitch";
+				return;
+			}
+			else if(gameData.charAt(1) == 'L') {
 				addSequential(new AutoLtoLScale());
 				Robot.autoPath = "AutoLtoLScale";
+				//addSequential(new Auto2CubeLScale());
+				//Robot.autoPath = "2CubeLScale";
 				return;
 			}
 			else if(gameData.charAt(1)=='R'){
