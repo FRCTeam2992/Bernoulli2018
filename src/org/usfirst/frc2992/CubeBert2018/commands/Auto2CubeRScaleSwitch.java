@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class Auto2CubeLScaleSwitch extends CommandGroup {
+public class Auto2CubeRScaleSwitch extends CommandGroup {
 
-    public Auto2CubeLScaleSwitch() {
+    public Auto2CubeRScaleSwitch() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -27,6 +27,8 @@ public class Auto2CubeLScaleSwitch extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	//addSequential(new AutoRtoRScale());//loads 2nd cube
     	addParallel(new AutoIntakeReady());
     	addSequential(new AutoDriveFwd(244, 0.8, 4, true, 0));
     	addSequential(new liftHeight(33.5, 3));
@@ -44,17 +46,16 @@ public class Auto2CubeLScaleSwitch extends CommandGroup {
     	addSequential(new AutoDriveFwd(45, 0.8, 3, true, -90));
     	addSequential(new AutoDriveTurn(-180, 0.8, 1));
     	addParallel(new intakeIn(1));
-    	addSequential(new AutoDriveFwd(45, 0.35, 3, true, -180));
+    	addSequential(new AutoDriveFwd(30, 0.35, 3, true, -180));
     	//addSequential(new WaitCommand(0.25));
     	addSequential(new intakeArmsOpen(false));
-    	addSequential(new WaitCommand(0.5));
+    	addSequential(new WaitCommand(0.25));
     	addParallel(new intakeStop());
-    	//addSequential(new AutoLtoLScale());//loads 2nd cube already (didnt work bc never ended)
-    	//next lines are for getting switch
-    	addSequential(new AutoDriveFwd(-10, 0.5, 3, true, 0));
-    	addParallel(new intakeStop());
-    	addSequential(new liftHeight(Robot.constants.switchHeight+5, 3));
-    	addSequential(new AutoDriveFwd(20, 0.5, 3, true, 180));
+    	
+    	//next lines for placing cube in switch 
+    	addSequential(new AutoDriveFwd(-3, 0.8, 3, true, -180));
+    	addSequential(new liftHeight(Robot.constants.switchHeight+10, 3));
+    	addSequential(new AutoDriveFwd(7, 0.5, 3, true, -180));
     	addParallel(new intakeOut(1));
     	addSequential(new WaitCommand(1));
     	addParallel(new intakeStop());

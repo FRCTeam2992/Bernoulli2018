@@ -27,17 +27,27 @@ public class AutoRtoRScale extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutoDriveFwd(262, 0.5, 4, true, 0));
-    	addSequential(new AutoIntakeReady());
-    	addSequential(new liftHeight(35.5, 4));
+    	addParallel(new AutoIntakeReady());
+    	addSequential(new AutoDriveFwd(244, 0.8, 4, true, 0));
+    	addSequential(new liftHeight(33.5, 3));
     	addParallel(new liftStop());    	
     	addSequential(new AutoDriveTurn(-60, 0.8, 3));
     	addSequential(new AutoDriveFwd(12, 0.3, 3, true, -60));
     	addParallel(new intakeOut(1.0));
-    	addSequential(new WaitCommand(1.0));
+    	addSequential(new WaitCommand(0.25));
     	addSequential(new AutoDriveFwd(-12, 0.3, 3, true, -60));
     	addParallel(new intakeStop());
     	addParallel(new liftHeight(0, 5));
-    	addSequential(new AutoDriveTurn(-135, 0.3, 3));
+    	addSequential(new AutoDriveTurn(-145, 0.3, 3));
+    	//next lines for getting 2nd cube
+    	addSequential(new intakeArmsOpen(true));
+    	addSequential(new AutoDriveFwd(45, 0.8, 3, true, -90));
+    	addSequential(new AutoDriveTurn(-180, 0.8, 1));
+    	addParallel(new intakeIn(1));
+    	addSequential(new AutoDriveFwd(45, 0.35, 3, true, -180));
+    	//addSequential(new WaitCommand(0.25));
+    	addSequential(new intakeArmsOpen(false));
+    	addSequential(new WaitCommand(0.5));
+    	addParallel(new intakeStop());
     }
 }

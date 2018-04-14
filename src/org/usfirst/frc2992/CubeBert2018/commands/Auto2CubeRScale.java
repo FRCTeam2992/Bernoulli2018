@@ -1,14 +1,16 @@
 package org.usfirst.frc2992.CubeBert2018.commands;
 
+import org.usfirst.frc2992.CubeBert2018.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-public class Auto2CubeLScale extends CommandGroup {
+public class Auto2CubeRScale extends CommandGroup {
 
-    public Auto2CubeLScale() {
+    public Auto2CubeRScale() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,9 +28,9 @@ public class Auto2CubeLScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new AutoLtoLScale());//loads 2nd cube
-    	//next lines are for getting 2 cube scale
-    	addSequential(new AutoDriveFwd(-50, 0.5, 3, true, 135));
+    	addSequential(new AutoRtoRScale());//loads 2nd cube
+    	//next lines for 2nd cube
+    	addSequential(new AutoDriveFwd(-30, 0.5, 3, true, -135));
     	addParallel(new intakeStop());
     	addParallel(new liftHeight(35.5, 3.5));
     	addSequential(new AutoDriveTurn(0, 0.3, 3));

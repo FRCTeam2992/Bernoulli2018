@@ -27,8 +27,8 @@ public class AutoLtoLScale extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addParallel(new AutoIntakeReady());
     	addSequential(new AutoDriveFwd(262, 0.5, 4, true, 0));
-    	addSequential(new AutoIntakeReady());
     	addSequential(new liftHeight(35.5, 4));
     	addParallel(new liftStop());
     	addSequential(new AutoDriveTurn(60, 0.8, 3));    	
@@ -39,15 +39,15 @@ public class AutoLtoLScale extends CommandGroup {
     	addParallel(new intakeStop());
     	addParallel(new liftHeight(0, 5));
     	addSequential(new AutoDriveTurn(135, 0.3, 3));
+    	//next lines for getting 2nd cube
     	addParallel(new intakeArmsOpen(true));
     	addSequential(new AutoDriveFwd(30, 0.5, 3, true, 135));
     	addParallel(new AutoDriveFwd(6, 0.4, 3, true, 90));
     	addParallel(new intakeIn(1));
     	addSequential(new WaitCommand(1));
-    	
-    	
-    	
-    	
-    	
+    	addSequential(new intakeArmsOpen(false));
+    	addParallel(new intakeStop());
+    	addSequential(new WaitCommand(0.25));
+    	addParallel(new intakeStop());
     }
 }

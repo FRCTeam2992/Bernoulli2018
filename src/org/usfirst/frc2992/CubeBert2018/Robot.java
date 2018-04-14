@@ -100,7 +100,7 @@ public class Robot extends TimedRobot {
     public void disabledInit(){
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
     	RobotMap.rampDeployRelay.set(Value.kOff);
-
+    	RobotMap.rampDeploySol.set(false);
     }
 
     @Override
@@ -115,6 +115,7 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
     	RobotMap.rampDeployRelay.set(Value.kOff);
+    	RobotMap.rampDeploySol.set(false);
     	gameData = DriverStation.getInstance().getGameSpecificMessage();
     	int retries = 100;
         while (gameData.length() < 2 && retries > 0) {
@@ -155,6 +156,7 @@ public class Robot extends TimedRobot {
         // this line or comment it out.
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
     	RobotMap.rampDeployRelay.set(Value.kOff);
+    	RobotMap.rampDeploySol.set(false);
     	intake.intakeStop();
     	intake.intakeArmsOpen(false);
     	intake.deployIntake(false);

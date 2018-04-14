@@ -29,6 +29,11 @@ public class AutoRCloseScaleSwitch extends CommandGroup {
     	String gameData = Robot.gameData;
     	
     	if(gameData.length()>0) {
+    		if(gameData.charAt(0)=='R' && gameData.charAt(1)=='R') {
+    			addSequential(new Auto2CubeRScaleSwitch());
+    			Robot.autoPath = "Auto2CubeRScaleSwitch";
+    			return;
+    		}
     		if(gameData.charAt(1)=='R') {
     			addSequential(new AutoRtoRScale());
     			Robot.autoPath = "AutoRtoRScale";
