@@ -26,9 +26,7 @@ public class AutoAngleSwitchLiftLeft extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new AutoDriveFwd(60,0.8,3,true,-60));
+    	addParallel(new AutoDriveFwd(69,0.8,5,true,-70));//12 in more than right
     	addSequential(new AutoIntakeReady());
-    	addSequential(new liftHeight(Robot.constants.switchHeight+7,3));
-
     }
 }

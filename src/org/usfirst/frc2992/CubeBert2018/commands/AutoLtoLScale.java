@@ -38,16 +38,17 @@ public class AutoLtoLScale extends CommandGroup {
     	addSequential(new AutoDriveFwd(-24, 0.3, 3, true, 60));
     	addParallel(new intakeStop());
     	addParallel(new liftHeight(0, 5));
-    	addSequential(new AutoDriveTurn(135, 0.3, 3));
+    	addSequential(new AutoDriveTurn(145, 0.3, 3));
     	//next lines for getting 2nd cube
     	addParallel(new intakeArmsOpen(true));
-    	addSequential(new AutoDriveFwd(30, 0.5, 3, true, 135));
-    	addParallel(new AutoDriveFwd(6, 0.4, 3, true, 90));
+    	addSequential(new AutoDriveFwd(45, 0.8, 3, true, 90));
+    	addSequential(new AutoDriveTurn(180, 0.8, 1));
     	addParallel(new intakeIn(1));
-    	addSequential(new WaitCommand(1));
+    	addSequential(new AutoDriveFwd(45, 0.35, 3, true, 180));
+    	//addSequential(new WaitCommand(1));
     	addSequential(new intakeArmsOpen(false));
-    	addParallel(new intakeStop());
-    	addSequential(new WaitCommand(0.25));
+    	//addParallel(new intakeStop());
+    	addSequential(new WaitCommand(0.5));
     	addParallel(new intakeStop());
     }
 }

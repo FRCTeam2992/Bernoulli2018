@@ -91,9 +91,10 @@ public class AutoDriveFwd extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	for (WPI_TalonSRX motor : RobotMap.allmotors) {
-    		motor.setNeutralMode(NeutralMode.Coast);
-    	}
+    	Robot.driveTrain.allStop();
+    	//for (WPI_TalonSRX motor : RobotMap.allmotors) {
+    	//	motor.setNeutralMode(NeutralMode.Coast);
+    	//}
     	Robot.driveTrain.lowGear();
     }
 
@@ -101,9 +102,10 @@ public class AutoDriveFwd extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-    	for (WPI_TalonSRX motor : RobotMap.allmotors) {
-    		motor.setNeutralMode(NeutralMode.Coast);
-    	}
+    	Robot.driveTrain.allStop();
+    	//for (WPI_TalonSRX motor : RobotMap.allmotors) {
+    	//	motor.setNeutralMode(NeutralMode.Coast);
+    	//}
     	Robot.driveTrain.lowGear();
     }
 }

@@ -39,7 +39,7 @@ public class AutoRSwitchOnly extends CommandGroup {
     			return;
     		}
     	}
-		addSequential(new AutoDriveFwd(Robot.constants.autoPastSwitchDist, 0.5, 3, true, 0));
+		addSequential(new AutoDriveFwd(Robot.constants.autoCrossLineDist, 0.5, 3, true, 0));
 		Robot.autoPath = "AutoCrossLine";
 
     }

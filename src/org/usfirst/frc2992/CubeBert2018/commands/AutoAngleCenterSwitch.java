@@ -51,7 +51,7 @@ public class AutoAngleCenterSwitch extends CommandGroup {
 		addSequential(new AutoDriveFwd(49,0.8,3,true,90));
 		addSequential(new AutoDriveTurn(0,0.8,3));
 		addSequential(new AutoIntakeReady());
-		addSequential(new liftHeight(Robot.constants.switchHeight+3, 4.0));
+		addSequential(new liftHeight(Robot.constants.switchHeight+5, 4.0));
 		addParallel(new liftStop());
 		addSequential(new AutoDriveFwd(74,0.8,3,true,0));
 		Robot.autoPath =  "AutoCtoCrossLine";

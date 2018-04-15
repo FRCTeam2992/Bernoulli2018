@@ -41,20 +41,20 @@ public class Auto2CubeLScaleSwitch extends CommandGroup {
     	addSequential(new AutoDriveTurn(-145, 0.3, 3));
     	//next lines for getting 2nd cube
     	addSequential(new intakeArmsOpen(true));
-    	addSequential(new AutoDriveFwd(45, 0.8, 3, true, -90));
-    	addSequential(new AutoDriveTurn(-180, 0.8, 1));
+    	addSequential(new AutoDriveFwd(45, 0.8, 3, true, 90));
+    	addSequential(new AutoDriveTurn(180, 0.8, 1));
     	addParallel(new intakeIn(1));
-    	addSequential(new AutoDriveFwd(45, 0.35, 3, true, -180));
+    	addSequential(new AutoDriveFwd(45, 0.35, 3, true, 180));
     	//addSequential(new WaitCommand(0.25));
     	addSequential(new intakeArmsOpen(false));
     	addSequential(new WaitCommand(0.5));
     	addParallel(new intakeStop());
     	//addSequential(new AutoLtoLScale());//loads 2nd cube already (didnt work bc never ended)
     	//next lines are for getting switch
-    	addSequential(new AutoDriveFwd(-10, 0.5, 3, true, 0));
-    	addParallel(new intakeStop());
+    	addSequential(new AutoDriveFwd(-3, 0.5, 3, true, 180));
+    	//addParallel(new intakeStop());
     	addSequential(new liftHeight(Robot.constants.switchHeight+5, 3));
-    	addSequential(new AutoDriveFwd(20, 0.5, 3, true, 180));
+    	addSequential(new AutoDriveFwd(7, 0.5, 3, true, 180));
     	addParallel(new intakeOut(1));
     	addSequential(new WaitCommand(1));
     	addParallel(new intakeStop());

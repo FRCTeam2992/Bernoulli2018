@@ -25,6 +25,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2992.CubeBert2018.commands.*;
 import org.usfirst.frc2992.CubeBert2018.subsystems.*;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -101,6 +104,9 @@ public class Robot extends TimedRobot {
     	RobotMap.rampDeployServo.set(Constants.rampServoNotDeploy);
     	RobotMap.rampDeployRelay.set(Value.kOff);
     	RobotMap.rampDeploySol.set(false);
+    	for (WPI_TalonSRX motor : RobotMap.allmotors) {
+    		motor.setNeutralMode(NeutralMode.Coast);
+    	}
     }
 
     @Override
@@ -146,6 +152,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        dashupdate();
     }
 
     @Override
@@ -162,6 +169,9 @@ public class Robot extends TimedRobot {
     	intake.deployIntake(false);
         if (autonomousCommand != null) autonomousCommand.cancel();
         RobotMap.navx.zeroYaw();
+        for (WPI_TalonSRX motor : RobotMap.allmotors) {
+    		motor.setNeutralMode(NeutralMode.Coast);
+    	}
     }
 
     /**

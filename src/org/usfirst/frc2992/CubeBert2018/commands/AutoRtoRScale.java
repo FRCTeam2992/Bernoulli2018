@@ -28,7 +28,7 @@ public class AutoRtoRScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addParallel(new AutoIntakeReady());
-    	addSequential(new AutoDriveFwd(244, 0.8, 4, true, 0));
+    	addSequential(new AutoDriveFwd(250, 0.8, 4, true, 0));
     	addSequential(new liftHeight(33.5, 3));
     	addParallel(new liftStop());    	
     	addSequential(new AutoDriveTurn(-60, 0.8, 3));
