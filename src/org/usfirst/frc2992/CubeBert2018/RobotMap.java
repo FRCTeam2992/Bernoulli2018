@@ -196,13 +196,14 @@ public class RobotMap {
         liftClimberclimbMotor1 = new WPI_VictorSPX(4);
         liftClimberclimbMotor1.setSubsystem("LiftClimber");
         liftClimberclimbMotor1.setName("Climb motor 1");
+        
         liftClimberclimbMotor2 = new WPI_VictorSPX(3);
         liftClimberclimbMotor2.setSubsystem("LiftClimber");
         liftClimberclimbMotor2.setName("Climb motor 2");
         LiveWindow.add(liftClimberclimbMotor1);
         LiveWindow.add(liftClimberclimbMotor2);
         liftClimberclimbMotor1.setInverted(true);
-        liftClimberclimbMotor2.setInverted(true);
+        liftClimberclimbMotor2.setInverted(false);
         liftClimberclimbMotor1.setNeutralMode(NeutralMode.Brake);
         liftClimberclimbMotor2.setNeutralMode(NeutralMode.Brake);
         

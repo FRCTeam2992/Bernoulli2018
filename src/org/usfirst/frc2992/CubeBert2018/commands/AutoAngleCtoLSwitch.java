@@ -39,7 +39,7 @@ public class AutoAngleCtoLSwitch extends CommandGroup {
     	addSequential(new AutoAngleSwitchLiftLeft());
     	addParallel(new liftHeight(Robot.constants.switchHeight+7,3));
     	addSequential(new AutoDriveTurn(-70,0.5,1));
-    	addSequential(new AutoDriveFwd(69,0.5,5,true,0));//dist used to be 62
+    	addSequential(new AutoDriveFwd(70,0.5,5,true,0));//dist used to be 69
     	addParallel(new liftStop());// parallel bc otherwise wouldnt go on - return false to isfinished
 
     	//addSequential(new AutoDriveTurn(-33.27,0.8,2));
@@ -62,9 +62,9 @@ public class AutoAngleCtoLSwitch extends CommandGroup {
     	addSequential(new WaitCommand(0.5));
     	addSequential(new intakeArmsOpen(false));
     	addSequential(new WaitCommand(0.7));
+    	addParallel(new liftHeight(Robot.constants.switchHeight+7, 3));
     	addSequential(new AutoDriveFwd(-49, 0.8, 3, true, 60));
     	addParallel(new intakeStop());
-    	addParallel(new liftHeight(Robot.constants.switchHeight+5, 3));
     	addSequential(new AutoDriveTurn(0, 0.8, 3));
     	addSequential(new AutoDriveFwd(50, 0.8, 3, true, 0));
     	addParallel(new liftStop());
