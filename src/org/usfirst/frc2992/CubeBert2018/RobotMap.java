@@ -159,19 +159,24 @@ public class RobotMap {
     	
     	else if(botState == whichBot.secondBot) {
     		driveTrainrBDriveMotor = new WPI_TalonSRX(2);
+    		driveTrainrBDriveMotor.setNeutralMode(NeutralMode.Coast);
     		
     		driveTrainrMDriveMotor = new WPI_TalonSRX(3);
+    		driveTrainrMDriveMotor.setNeutralMode(NeutralMode.Coast);
     		
     		driveTrainlMDriveMotor = new WPI_TalonSRX(5);
     		driveTrainlMDriveMotor.setNeutralMode(NeutralMode.Coast);
     		
     		driveTrainlBDriveMotor = new WPI_TalonSRX(6);
+    		driveTrainlBDriveMotor.setNeutralMode(NeutralMode.Coast);
     		
     		intakerightIntakeMotor = new VictorSP(0);
+    		intakerightIntakeMotor.setInverted(true);
+    		
     		intakeleftIntakeMotor = new VictorSP(1);
     		
     		liftClimberclimbMotor1 = new VictorSP(2);
-    		liftClimberclimbMotor2 = new WPI_VictorSPX(7);
+    		liftClimberclimbMotor2 = new VictorSP(3);
     		
     		liftClimberliftMotor = new WPI_TalonSRX(4);
     		
