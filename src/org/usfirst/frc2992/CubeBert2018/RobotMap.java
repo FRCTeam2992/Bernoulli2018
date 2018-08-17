@@ -100,7 +100,7 @@ public class RobotMap {
     
     public static void init() {
 
-    	if(botState == whichBot.firstBot) {
+    	if(!(botState == whichBot.firstBot)) {//changed so comp motors with Team b controllers
     		/*
             driveTrainrFDriveMotor = new WPI_TalonSRX(1);
             driveTrainrFDriveMotor.setNeutralMode(NeutralMode.Coast);
@@ -157,7 +157,7 @@ public class RobotMap {
     		((BaseMotorController) liftClimberclimbMotor2).setNeutralMode(NeutralMode.Brake);
     	}
     	
-    	else if(botState == whichBot.secondBot) {
+    	else if(!(botState == whichBot.secondBot)) {//changed so new motors with old controllers
     		driveTrainrBDriveMotor = new WPI_TalonSRX(2);
     		driveTrainrBDriveMotor.setNeutralMode(NeutralMode.Coast);
     		
@@ -171,9 +171,9 @@ public class RobotMap {
     		driveTrainlBDriveMotor.setNeutralMode(NeutralMode.Coast);
     		
     		intakerightIntakeMotor = new VictorSP(0);
-    		intakerightIntakeMotor.setInverted(true);
     		
     		intakeleftIntakeMotor = new VictorSP(1);
+    		intakeleftIntakeMotor.setInverted(true);
     		
     		liftClimberclimbMotor1 = new VictorSP(2);
     		liftClimberclimbMotor2 = new VictorSP(3);
