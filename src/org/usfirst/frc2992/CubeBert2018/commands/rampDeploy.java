@@ -40,9 +40,9 @@ public class rampDeploy extends Command {
     @Override
     protected void initialize() {
     	// Only deploy if we are already in climber mode
-    	if (Robot.oi.climbMasterEnableBtn.get()) {
+    	//if (Robot.oi.climbMasterEnableBtn.get()) {
     		Robot.climber.deployRamps(m_deploy);
-    	}
+    	//}
     }
 
     // Called repeatedly when this Command is scheduled to run

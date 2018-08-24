@@ -72,7 +72,7 @@ public class OI {
     public JoystickButton smallClimbSpeedBtn;
     public JoystickButton bigClimbSpeedBtn;
     public JoystickButton scaleClampBtn;
-    public JoystickButton climbMasterEnableBtn;//deploy both ramps
+    //public JoystickButton climbMasterEnableBtn;//deploy both ramps
  
     public JoystickButton autoA;
     public JoystickButton autoB;
@@ -99,11 +99,11 @@ public class OI {
     	leftJoy = new mhJoystick(1);
         buttonBox = new Joystick(2);
         
-        outTakeJoy = new JoystickButton(leftJoy,3);
+        outTakeJoy = new JoystickButton(leftJoy, Robot.botState == Robot.whichBot.firstBot? 3: 4);
         outTakeJoy.whileHeld(new intakeOut(1.0));
         outTakeJoy.whenReleased(new intakeStop());
         
-        openIntakeJoy= new JoystickButton(leftJoy,4);
+        openIntakeJoy= new JoystickButton(leftJoy, Robot.botState == Robot.whichBot.firstBot? 4 : 5);
         openIntakeJoy.whenPressed(new intakeArmsOpen(true));
         
         closeIntakeJoy = new JoystickButton(leftJoy, 1);
@@ -113,7 +113,7 @@ public class OI {
         liftDownJoy.whileHeld(new liftDown(Robot.constants.liftDownPower));
         liftDownJoy.whenReleased(new liftStop());
         
-        liftUpJoy = new JoystickButton(rightJoy, 3);
+        liftUpJoy = new JoystickButton(rightJoy, Robot.botState == Robot.whichBot.firstBot? 3: 5);
         liftUpJoy.whileHeld(new liftUp(Robot.constants.liftUpPower));
         liftUpJoy.whenReleased(new liftStop());
         
@@ -173,7 +173,8 @@ public class OI {
         //scaleClampBtn = new JoystickButton(buttonBox, 14); no longer needed
         //scaleClampBtn.whenPressed(new ScaleClampDeploy(true));
         
-        climbMasterEnableBtn = new JoystickButton(buttonBox,15);
+        //got rid of for redstick
+        //climbMasterEnableBtn = new JoystickButton(buttonBox,15);
         
         autoA = new JoystickButton(buttonBox, 16);
         

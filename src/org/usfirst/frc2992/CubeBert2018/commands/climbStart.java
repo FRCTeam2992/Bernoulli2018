@@ -49,7 +49,8 @@ public class climbStart extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	if (Robot.oi.climbMasterEnableBtn.get() && m_speed > 0) {
+    	//if (Robot.oi.climbMasterEnableBtn.get() && m_speed > 0) {
+    	if (m_speed >0) {
     		Robot.climber.startClimbMotors(m_speed);
     	} else if (m_speed < 0){
     		Robot.climber.startClimbMotors(m_speed);

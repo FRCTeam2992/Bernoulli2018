@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
 		firstBot, secondBot;
 	}
 
-	public static final whichBot botState = whichBot.secondBot;
+	public static final whichBot botState = whichBot.firstBot;
 	
     Command autonomousCommand;
     public static String autoName;

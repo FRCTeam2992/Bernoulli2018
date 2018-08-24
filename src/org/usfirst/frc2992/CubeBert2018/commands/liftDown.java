@@ -48,12 +48,12 @@ public class liftDown extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	if (Robot.oi.climbMasterEnableBtn.get()) {
+    	//if (Robot.oi.climbMasterEnableBtn.get()) {
     		// We are in climb mode so go slower down
-    		Robot.lift.downLift(-0.3);
-    	} else {
+    	//	Robot.lift.downLift(-0.3);
+    	//} else {
         	Robot.lift.downLift(m_speed);    		
-    	}
+    	//}
     }
 
     // Make this return true when this Command no longer needs to run execute()
