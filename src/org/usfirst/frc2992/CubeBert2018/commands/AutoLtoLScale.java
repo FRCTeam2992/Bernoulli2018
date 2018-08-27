@@ -28,7 +28,7 @@ public class AutoLtoLScale extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addParallel(new AutoIntakeReady());
-    	addSequential(new AutoDriveFwd(262, 0.5, 4, true, 0));
+    	addSequential(new AutoDriveFwd(262, 0.5, 6, true, 0));
     	addSequential(new liftHeight(35.5, 4));
     	addParallel(new liftStop());
     	addSequential(new AutoDriveTurn(60, 0.8, 3));    	
